@@ -39,7 +39,7 @@ const EditStep3 = ({navigation}) => {
     if (validationTagCheck()) {
       let tag = hashTag
         .replace(" ", "")
-        .split("#")
+        .split(",")
         .filter(tag => tag !== "");
       let tagList = hashTagList.concat(tag);
 
@@ -51,9 +51,10 @@ const EditStep3 = ({navigation}) => {
         ...writeData,
         data: {
           ...writeData.data,
-          hashTag: filtering.join("#")
+          hashTag: filtering.join(",")
         }
       });
+      console.log(writeData)
 
       setHashTagList(filtering);
       setHashTag("");
@@ -134,7 +135,7 @@ const EditStep3 = ({navigation}) => {
                 }}
                 key={data}
               >
-                <Text style={{ fontSize: 12, color: "#1b1b1b" }}>#{data}</Text>
+                <Text style={{ fontSize: 12, color: "#1b1b1b" }}>{data}</Text>
                 <TouchableOpacity onPress={() => removeHashTag(data)}>
                   <Image
                     resizeMode="contain"

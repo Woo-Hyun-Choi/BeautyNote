@@ -364,7 +364,8 @@ const MainPage = ({ navigation }) => {
                   flex: 1,
                   flexDirection: "row",
                   paddingHorizontal: 15,
-                  justifyContent: "flex-start"
+                  justifyContent: "flex-start",
+                  flexWrap:"wrap"
                 }}
               >
                 {data.hashTag.split(",").map(tag => (
@@ -376,8 +377,10 @@ const MainPage = ({ navigation }) => {
                       marginHorizontal: 4,
                       alignSelf: "center",
                       justifyContent: "center",
-                      paddingHorizontal: 6
+                      paddingHorizontal: 6,
+                      flexWrap:"wrap"
                     }}
+                    key={tag}
                   >
                     <Text
                       style={{
@@ -385,12 +388,13 @@ const MainPage = ({ navigation }) => {
                         textAlign: "center",
                         fontSize: 10
                       }}
-                    >
+                    >{console.log(tag)}
                       {tag}
                     </Text>
                   </View>
                 ))}
               </View>
+              
               {/* 게시물 자세히 보기 */}
               <TouchableOpacity
                 style={{

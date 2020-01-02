@@ -25,7 +25,7 @@ const Main = ({ navigation }) => {
       }
     }
   }, [globalData]);
-
+  
 
   const findToken = async () => {
     const token = await AsyncStorage.getItem("@USER_TOKEN");

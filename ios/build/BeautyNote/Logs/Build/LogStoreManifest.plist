@@ -5,6 +5,41 @@
 	<key>logFormatVersion</key>
 	<integer>10</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>F4FB270D-9039-4705-A856-FDE13FC1F674</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F4FB270D-9039-4705-A856-FDE13FC1F674.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>BeautyNote project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>BeautyNote</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace BeautyNote with scheme BeautyNote and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>599667861.728971</real>
+			<key>timeStoppedRecording</key>
+			<real>599667862.44822097</real>
+			<key>title</key>
+			<string>Building workspace BeautyNote with scheme BeautyNote and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>F4FB270D-9039-4705-A856-FDE13FC1F674</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

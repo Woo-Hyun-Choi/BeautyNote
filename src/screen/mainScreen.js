@@ -8,6 +8,7 @@ import Follow from "../components/Follow/FollowStep1";
 import Edit from "../components/Edit/EditStep1";
 import Alert from "../components/Alert/Alert";
 import MyPage from "../components/MyPage/MyPage";
+import MyPageDetail from "../components/MyPage/MyPageDetail";
 import Settings from "../components/Settings/Settings";
 import MainPageDetail from "../components/Main/MainPageDetail";
 import FollowStep2 from "../components/Follow/FollowStep2";
@@ -63,6 +64,9 @@ const AlertStack = createStackNavigator({
 const MyPageStack = createStackNavigator({
   MyPage: {
     screen: MyPage
+  },
+  MyPageDetail:{
+    screen: MyPageDetail
   },
   Settings: {
     screen: Settings

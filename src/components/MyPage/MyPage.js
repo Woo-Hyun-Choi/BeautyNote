@@ -29,6 +29,7 @@ const options = {
 };
 
 const MyPage = ({navigation}) => {
+  const [lists, setLists] = useState([]);
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -101,6 +102,8 @@ const MyPage = ({navigation}) => {
           }
         }
       );
+
+      const concat = lists.concat(response.data.data);
 
       if (response.data.data) {
         updateProfile(response.data.data.file_no);
@@ -223,10 +226,7 @@ const MyPage = ({navigation}) => {
                 </View>
               </View>
             </View>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ flex: 1 }}
-            >
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View
                 style={{
                   flex: 1,
@@ -240,21 +240,25 @@ const MyPage = ({navigation}) => {
                 // }
               >
                 {profile.board_list.map(data => (
-                  <TouchableOpacity onPress={() =>
-                  navigation.push("NewPeedDetailPage", {
-                    board_no: profile.board_no
-                  })
-                }>
-                  <Image
-                    resizeMode="contain"
-                    style={{
-                      width: width / 3.1,
-                      height: width / 3.1,
-                      margin: width / 200
-                    }}
-                    source={{ uri: data.img }}
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.push("MyPageDetail", {
+                        board_no: profile.board_no
+                      })
+                    }
                     key={data.board_no}
-                  /></TouchableOpacity>
+                  >
+                    <Image
+                      resizeMode="contain"
+                      style={{
+                        width: width / 3.1,
+                        height: width / 3.1,
+                        margin: width / 200
+                      }}
+                      source={{ uri: data.img }}
+                      key={data.board_no}
+                    />
+                  </TouchableOpacity>
                 ))}
               </View>
             </ScrollView>
