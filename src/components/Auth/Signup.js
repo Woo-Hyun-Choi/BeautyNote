@@ -14,14 +14,14 @@ import { DEV_SERVER } from "../../setting";
 import validateEmail from "../../lib/validateEmail";
 import GlobalContext from "../../context/global.context";
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const [data, setData] = useState({
     name: "",
     nickname: "",
     phone: "",
     email: "",
     password: "",
-    gender: "",
+    gender: "M",
     verifyEmail: false,
     verifySMSAuth: false,
     verifyCode: ""
@@ -40,9 +40,12 @@ const Signup = () => {
           password,
           gender
         });
-
+        console.log("before navigation")
+        console.log(response.data)
         if (response.data.message === "REGISTERED") {
+          console.log("after")
           setGlobalData({ ...globalData, isLogged: true });
+          navigation.push("Login", )
         } else if (
           response.data.message === "This ID has already been registered."
         ) {
@@ -77,9 +80,11 @@ const Signup = () => {
       return alert("이메일을 입력해주세요.");
     } else if (password === "") {
       return alert("패스워드를 입력해주세요.");
-    } else if (gender === "") {
+    }
+     else if (gender === "") {
       return alert("성별을 선택해주세요.");
-    } else if (verifyEmail === "") {
+    } 
+    else if (verifyEmail === "") {
       return alert("이메일 인증을 해주세요.");
     } else if (verifyCode === "") {
       return alert("휴대폰 인증을 해주세요.");
@@ -222,6 +227,7 @@ const Signup = () => {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
+                onPress={()=>alert("사용가능한 닉네임입니다.")}
               >
                 <ImageBackground
                   style={{

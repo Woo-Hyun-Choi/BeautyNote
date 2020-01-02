@@ -13,6 +13,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import axios from "axios";
 import { DEV_SERVER } from "../../setting";
 import GlobalContext from "../../context/global.context";
+import mainScreen from "../../screen/mainScreen";
 
 const Login = ({ navigation }) => {
   const [data, setData] = useState({
@@ -42,11 +43,12 @@ const Login = ({ navigation }) => {
 
       const responseData = response.data;
 
-      if (responseData.message === "WrongAccount") {
-        alert("이메일 혹은 패스워드가 일치 하지 않습니다.");
-      } else {
+      if (responseData.message !== "WrongAccount") {
+        console.log(responseData)
         await AsyncStorage.setItem("@USER_TOKEN", responseData.Authorization);
         setGlobalData({ ...globalData, isLogged: true });
+      } else {
+        alert("이메일 혹은 패스워드가 일치 하지 않습니다.");
       }
     } catch (error) {
       console.log("Login.js onLogin Function Error", error);
@@ -99,7 +101,9 @@ const Login = ({ navigation }) => {
                 borderBottomWidth: 0.5,
                 borderBottomColor: "#fff"
               }}
+              autoCapitalize="none"
               returnKeyType={"next"}
+              keyboardType="email-address"
               placeholder="이메일을 입력해주세요!"
               placeholderTextColor={"#bababa"}
               onChangeText={text => onChange(text, "email")}

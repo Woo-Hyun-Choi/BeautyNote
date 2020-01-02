@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-	SafeAreaView,
-	Image,
-	ScrollView,
-	StyleSheet,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View
+  SafeAreaView,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import Swiper from "../Swiper/Swiper";
 import axios from "axios";
@@ -16,102 +16,112 @@ import { GET_USER_TOKEN } from "../../lib/getToken";
 import GlobalContext from "../../context/global.context";
 
 const MainPage = ({ navigation }) => {
-	const [lists, setLists] = useState([]);
-	const [page_no, setPage_no] = useState(1);
-	const { globalData, setGlobalData } = useContext(GlobalContext);
+  const [lists, setLists] = useState([]);
+  const [page_no, setPage_no] = useState(1);
+  const { globalData, setGlobalData } = useContext(GlobalContext);
 
-	useEffect(() => {
-		if(page_no === 1) {
-			callAPI();
-		}
-	}, []);
+  useEffect(() => {
+    if (page_no === 1) {
+      callAPI();
+    }
+  }, []);
 
-	const callAPI = async () => {
-		try {
-			const Authorization = await GET_USER_TOKEN();
-			const response = await axios.post(
-					`${DEV_SERVER}/Timeline/getList`,
-					{ page_no },
-					{
-						headers: {
-							Authorization
-						}
-					}
-			);
+  const callAPI = async () => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/Timeline/getList`,
+        { page_no },
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
 
-			const concat = lists.concat(response.data.data);
+      const concat = lists.concat(response.data.data);
 
-			setLists(concat);
-			setPage_no(page_no + 1);
-		} catch(error) {
-			console.log("MainPage.js callAPI Function Error", error);
-			alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
-		}
-	};
+      setLists(concat);
+      setPage_no(page_no + 1);
+    } catch (error) {
+      console.log("MainPage.js callAPI Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+    }
+  };
 
-	const getOtherUserInfo = (account_no) => {
-		navigation.push('OtherUserPage', {
-			account_no
-		})
-	}
+  const getOtherUserInfo = account_no => {
+    navigation.push("OtherUserPage", {
+      account_no
+    });
+  };
 
-	const
-			onLike = async (board_no) => {
-				try {
-					const Authorization = await GET_USER_TOKEN();
-					const response = await axios.post(
-							`${DEV_SERVER}/TimeLine/likePost`,
-							{ board_no },
-							{
-								headers: {
-									Authorization
-								}
-							}
-					);
+  const onLike = async board_no => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/TimeLine/likePost`,
+        { board_no },
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
 
-					if(response.data.status === 'SUCCESS') {
-						const edit = lists.map(data => data.board_no === board_no ? ({
-							...data,
-							is_like: response.data.message,
-							like_num: response.data.message === 'LIKED' ? data.like_num + 1 : data.like_num - 1
-						}) : data)
+      if (response.data.status === "SUCCESS") {
+        const edit = lists.map(data =>
+          data.board_no === board_no
+            ? {
+                ...data,
+                is_like: response.data.message,
+                like_num:
+                  response.data.message === "LIKED"
+                    ? data.like_num + 1
+                    : data.like_num - 1
+              }
+            : data
+        );
 
-						setLists(edit)
-					}
-				} catch(error) {
-					console.log("MainPage.js onLike Function Error", error);
-					alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
-				}
-			};
+        setLists(edit);
+      }
+    } catch (error) {
+      console.log("MainPage.js onLike Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
+    }
+  };
 
-	const onFollow = async (following_no) => {
-		try {
-			const Authorization = await GET_USER_TOKEN();
-			const response = await axios.post(
-					`${DEV_SERVER}/Follow/follow`,
-					{ account_no: following_no },
-					{
-						headers: {
-							Authorization
-						}
-					}
-			);
+  const onFollow = async following_no => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/Follow/follow`,
+        { account_no: following_no },
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
 
-			if(response.data.status === 'success') {
-				const edit = lists.map(data => data.following_no === following_no ? ({
-					...data,
-					follow: data.follow === 'CANCELED' ? 'FOLLOWED' : 'CANCELED'
-				}) : data)
+      if (response.data.status === "success") {
+        const edit = lists.map(data =>
+          data.following_no === following_no
+            ? {
+                ...data,
+                follow: data.follow === "CANCELED" ? "FOLLOWED" : "CANCELED"
+              }
+            : data
+        );
 
-				setLists(edit)
-			}
-		} catch(error) {
-			console.log("FollowStep1.js onFollow Function Error", error);
-			alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
-		}
-	};
+        setLists(edit);
+      }
+    } catch (error) {
+      console.log("FollowStep1.js onFollow Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
+    }
+  };
 
-	return (
+  return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* 검색창 */}
       <View
@@ -414,38 +424,38 @@ const MainPage = ({ navigation }) => {
 };
 
 MainPage.navigationOptions = {
-	header: null
+  header: null
 };
 
 const styles = StyleSheet.create({
-	tagLine: {
-		height: 50,
-		flexDirection: "row",
-		alignItems: "center",
-		paddingLeft: 10,
-		marginVertical: 5
-	},
-	tag_Box: {
-		display: "flex",
-		height: 30,
-		borderRadius: 18,
-		borderColor: "#e2e2e2",
-		borderWidth: 0.5,
-		backgroundColor: "white",
-		marginHorizontal: 5,
-		alignItems: "center",
-		justifyContent: "center",
-		paddingHorizontal: 15
-	},
-	tag_Text: {
-		color: "#494949",
-		fontSize: 12
-	},
-	bottom_container: {
-		flex: 1,
-		height: "100%",
-		backgroundColor: "#f5f5f5"
-	}
+  tagLine: {
+    height: 50,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 10,
+    marginVertical: 5
+  },
+  tag_Box: {
+    display: "flex",
+    height: 30,
+    borderRadius: 18,
+    borderColor: "#e2e2e2",
+    borderWidth: 0.5,
+    backgroundColor: "white",
+    marginHorizontal: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 15
+  },
+  tag_Text: {
+    color: "#494949",
+    fontSize: 12
+  },
+  bottom_container: {
+    flex: 1,
+    height: "100%",
+    backgroundColor: "#f5f5f5"
+  }
 });
 
 export default MainPage;

@@ -56,7 +56,6 @@ const MainPageDetail = ({ navigation }) => {
           }
         }
       );
-
       console.log("response.data", response.data);
 
       setDetail(response.data.data);

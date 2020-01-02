@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import { DEV_SERVER } from "../../../setting";
 
-const FindUserIDStep1 = () => {
+const FindUserIDStep1 = ({navigation}) => {
   const [data, setData] = useState({
     phone: "",
     code: "",
@@ -109,6 +109,11 @@ const FindUserIDStep1 = () => {
     });
   };
 
+  // 상결
+  // const getEmail=()=>{
+  //   navigation.push("FindUserIDStep2", {email:setFindEmail})
+  // }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* 상단 컨테이너 */}
@@ -134,6 +139,7 @@ const FindUserIDStep1 = () => {
             }}
           >
             <TextInput
+              style={{ flex: 1, color: "#282828", fontSize: 12.7 }}
               placeholder="- 제외"
               onChangeText={text => onChange(text, "phone")}
             />
@@ -179,6 +185,7 @@ const FindUserIDStep1 = () => {
             }}
           >
             <TextInput
+              style={{ flex: 1, color: "#282828", fontSize: 12.7 }}
               placeholder="인증번호 입력"
               onChangeText={text => onChange(text, "code")}
             />
@@ -230,7 +237,7 @@ const FindUserIDStep1 = () => {
             borderRadius: 10,
             backgroundColor: "#be1d2d"
           }}
-          onPress={{}}
+          onPress={()=> getEmail()}
         >
           <Text style={{ color: "#fff", fontSize: 16, fontWeight: "700" }}>
             확인

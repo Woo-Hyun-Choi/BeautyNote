@@ -1,33 +1,33 @@
 dependencies: \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTJavaScriptLoader.mm \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Target\ Support\ Files/React-Core/React-Core-prefix.pch \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTDefines.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTInspectorDevServerHelper.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTPackagerConnection.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Public/React-cxxreact/cxxreact/JSBundleType.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Folly/folly/Portability.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Folly/folly/portability/Config.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Folly/folly/CPortability.h \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTBridge.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTBridgeDelegate.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTJavaScriptLoader.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTBridgeModule.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTFrameUpdate.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTInvalidating.h \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTConvert.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTAnimationType.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTBorderStyle.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTLog.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTAssert.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTUtils.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTPointerEvents.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTTextDecorationLineType.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Public/Yoga/yoga/Yoga.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Public/Yoga/yoga/YGEnums.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Public/Yoga/yoga/YGMacros.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Public/Yoga/yoga/YGValue.h \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
-  /Users/choi/Desktop/BeautyNote/ios/Pods/Headers/Private/React-Core/React/RCTMultipartStreamReader.h \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
-  /Users/choi/Desktop/BeautyNote/node_modules/react-native/React/Base/RCTUtils.h
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTJavaScriptLoader.mm \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Target\ Support\ Files/React-Core/React-Core-prefix.pch \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTDefines.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTPackagerConnection.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Public/React-cxxreact/cxxreact/JSBundleType.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Folly/folly/Portability.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Folly/folly/portability/Config.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Folly/folly/CPortability.h \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTBridgeDelegate.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTJavaScriptLoader.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTBridgeModule.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTFrameUpdate.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTInvalidating.h \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTAnimationType.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTBorderStyle.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTLog.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTAssert.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTUtils.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTPointerEvents.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTTextDecorationLineType.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Public/Yoga/yoga/Yoga.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Public/Yoga/yoga/YGEnums.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Public/Yoga/yoga/YGMacros.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Public/Yoga/yoga/YGValue.h \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
+  /Users/choi/Desktop/BeautyNote-WH/ios/Pods/Headers/Private/React-Core/React/RCTMultipartStreamReader.h \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native/React/Base/RCTUtils.h

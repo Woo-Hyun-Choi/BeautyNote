@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from "react";
-import { View, Text, SafeAreaView, ImageBackground } from "react-native";
+import { View, Text, SafeAreaView, ImageBackground, TouchableOpacity } from "react-native";
 
-const intro = () => {
+const intro = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#Be1c2d" }}>
       <View style={{ flex: 1 }}>
@@ -30,7 +30,7 @@ const intro = () => {
             만나보세요:)
           </Text>
           {/* 회원가입 바로가기 버튼 */}
-          <View
+          <TouchableOpacity
             style={{
               width: "70%",
               height: 50,
@@ -40,11 +40,12 @@ const intro = () => {
               justifyContent: "center",
               alignItems: "center"
             }}
+            onPress={()=>navigation.navigate("Login")}
           >
             <Text style={{ color: "#fff", fontWeight: "800" }}>
               회원가입 바로가기
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -69,7 +70,7 @@ const intro = () => {
             top: null,
             bottom: -50
           }}
-          source={require("../assets/images/bg-intro-1.png")}
+          source={require("../../assets/images/bg-intro-1.png")}
         />
       </View>
     </SafeAreaView>
