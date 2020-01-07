@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Dimensions
+  Dimensions,
+  RefreshControl
 } from "react-native";
 import { GET_USER_TOKEN } from "../../lib/getToken";
 import axios from "axios";
@@ -15,6 +16,11 @@ import { DEV_SERVER } from "../../setting";
 import ImagePicker from "react-native-image-picker";
 
 const { width, height } = Dimensions.get("window");
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 const options = {
   title: "프로필 사진 설정",
@@ -31,6 +37,15 @@ const options = {
 const MyPage = ({navigation}) => {
   const [lists, setLists] = useState([]);
   const [profile, setProfile] = useState(null);
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    
+    wait(2000).then(() => setRefreshing(false));
+    getMyProfile();
+  }, [refreshing]);
 
   useEffect(() => {
     getMyProfile();
@@ -226,7 +241,12 @@ const MyPage = ({navigation}) => {
                 </View>
               </View>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }
+            >
               <View
                 style={{
                   flex: 1,
