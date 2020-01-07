@@ -1,16 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from "react";
-import { View, Text, SafeAreaView, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ImageBackground,
+  TouchableOpacity
+} from "react-native";
 
-const intro = ({navigation}) => {
+const intro = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#Be1c2d" }}>
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 0.5 }} />
+        <View style={{ flex: 0.1 }} />
         <View
           style={{
-            flex: 1,
-            justifyContent: "space-around",
+            flex: 1.3,
+            justifyContent: "center",
             alignItems: "center"
           }}
         >
@@ -20,14 +26,23 @@ const intro = ({navigation}) => {
               color: "#fff",
               fontSize: 20,
               fontWeight: "100",
-              lineHeight: 45
+              lineHeight: 45,
+              marginBottom: 20
             }}
           >
-            <Text style={{ fontWeight: "800" }}>뷰티노트</Text>에 오신 것을
-            환영합니다!{"\n"}
-            지금 바로 회원가입 하고{"\n"}
-            <Text style={{ fontWeight: "800" }}>다양한 뷰티 정보</Text>를
-            만나보세요:)
+            <Text style={{ fontWeight: "800" }}>뷰티노트 (Beauty Knot)</Text>
+            {"\n"}
+            <Text style={{ lineHeight: 16 }}>{"\n"}</Text>
+            아름다움은 연결되어 있습니다.{"\n"}
+            어딘가에서 만나고 또 이어집니다.{"\n"}
+            {"\n"}
+            <Text style={{ fontWeight: "800", lineHeight: 16 }}>
+              아름다움에 관한 모든 것.{"\n"}
+              {"\n"}
+            </Text>
+            믿을 수 있는 정보,{"\n"}
+            신뢰할 수 있는 전문가를{"\n"}
+            만나보세요.
           </Text>
           {/* 회원가입 바로가기 버튼 */}
           <TouchableOpacity
@@ -40,10 +55,10 @@ const intro = ({navigation}) => {
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={()=>navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Login")}
           >
             <Text style={{ color: "#fff", fontWeight: "800" }}>
-              회원가입 바로가기
+              회원가입 바로가기 >
             </Text>
           </TouchableOpacity>
         </View>
@@ -52,7 +67,7 @@ const intro = ({navigation}) => {
       {/* 하단 배경 이미지 */}
       <View
         style={{
-          flex: 1,
+          flex: 0.6,
           justifyContent: "flex-end",
           alignItems: "flex-end",
           alignSelf: "flex-end"

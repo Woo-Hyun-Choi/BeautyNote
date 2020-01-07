@@ -9,6 +9,7 @@ import FindUserIDStep2 from "../components/Auth/FindUserID/FindUserIDStep2";
 import FindUserPasswordStep1 from "../components/Auth/FindUserPassword/FindUserPasswordStep1";
 import FindUserPasswordStep2 from "../components/Auth/FindUserPassword/FindUserPasswordStep2";
 import Signup from "../components/Auth/Signup";
+import Main from "../screen/mainScreen"
 
 const AuthStack = createStackNavigator({
   Intro:{
@@ -23,6 +24,13 @@ const AuthStack = createStackNavigator({
       header:null
     }
   },
+  Main: {
+    screen: Main,
+    navigationOptions:{
+      header:null
+    }
+  },
+
   FindId: {
     screen: createStackNavigator({
       FindUserIDStep1: {

@@ -102,6 +102,7 @@ const EditStep1 = ({ navigation }) => {
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ flex: 1, width: "100%", height: "100%" }}
               keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="never"
             >
               {/* 게시물 내용 */}
               <View
@@ -114,6 +115,7 @@ const EditStep1 = ({ navigation }) => {
                 <TextInput
                   autoFocus={true}
                   multiline={true}
+                  returnKeyType="done"
                   autoCompleteType="off"
                   style={{
                     flex: 1,

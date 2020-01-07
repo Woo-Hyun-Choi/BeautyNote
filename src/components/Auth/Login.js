@@ -6,7 +6,8 @@ import {
   TextInput,
   SafeAreaView,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -47,6 +48,7 @@ const Login = ({ navigation }) => {
         console.log(responseData)
         await AsyncStorage.setItem("@USER_TOKEN", responseData.Authorization);
         setGlobalData({ ...globalData, isLogged: true });
+        navigation.navigate("Main")
       } else {
         alert("이메일 혹은 패스워드가 일치 하지 않습니다.");
       }
@@ -71,12 +73,13 @@ const Login = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#Be1c2d" }}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 7 }}>
         <View style={{ flex: 0.5 }} />
         {/* 2/4지점 컨테이너 */}
         <View
           style={{
-            flex: 1,
+            display:"flex",
+            height:300,
             justifyContent: "space-around",
             alignItems: "center"
           }}

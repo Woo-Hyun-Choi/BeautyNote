@@ -68,7 +68,7 @@ const Main = ({ navigation }) => {
 
   return (
     <>
-      {isLogged ? (
+      {isLogged == true ? (
         Object.keys(globalData.userInfo).length > 0 && <MyPage />
       ) : (
         <Intro />
