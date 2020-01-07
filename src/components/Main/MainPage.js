@@ -7,7 +7,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  RefreshControl
 } from "react-native";
 import Swiper from "../Swiper/Swiper";
 import axios from "axios";
@@ -15,10 +16,25 @@ import { DEV_SERVER } from "../../setting";
 import { GET_USER_TOKEN } from "../../lib/getToken";
 import GlobalContext from "../../context/global.context";
 
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
 const MainPage = ({ navigation }) => {
   const [lists, setLists] = useState([]);
   const [page_no, setPage_no] = useState(1);
   const { globalData, setGlobalData } = useContext(GlobalContext);
+  
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    
+    wait(2000).then(() => setRefreshing(false));
+    callAPI();
+  }, [refreshing]);
 
   useEffect(() => {
     if (page_no === 1) {
@@ -173,7 +189,12 @@ const MainPage = ({ navigation }) => {
 
       {/* 뉴스피드(게시물) */}
       <View style={styles.bottom_container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
           {/* 게시물 */}
           {lists.map(data => (
             <View
@@ -365,7 +386,7 @@ const MainPage = ({ navigation }) => {
                   flexDirection: "row",
                   paddingHorizontal: 15,
                   justifyContent: "flex-start",
-                  flexWrap:"wrap"
+                  flexWrap: "wrap"
                 }}
               >
                 {data.hashTag.split(",").map(tag => (
@@ -378,7 +399,7 @@ const MainPage = ({ navigation }) => {
                       alignSelf: "center",
                       justifyContent: "center",
                       paddingHorizontal: 6,
-                      flexWrap:"wrap"
+                      flexWrap: "wrap"
                     }}
                     key={tag}
                   >
@@ -388,13 +409,14 @@ const MainPage = ({ navigation }) => {
                         textAlign: "center",
                         fontSize: 10
                       }}
-                    >{console.log(tag)}
+                    >
+                      {console.log(tag)}
                       {tag}
                     </Text>
                   </View>
                 ))}
               </View>
-              
+
               {/* 게시물 자세히 보기 */}
               <TouchableOpacity
                 style={{

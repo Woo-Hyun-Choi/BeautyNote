@@ -1,0 +1,88 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.beautynote"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="28" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:4:5-66
+12-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:5:5-64
+13-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:5:22-62
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:6:5-80
+14-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:6:22-78
+15
+16    <application
+16-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:7:5-25:19
+17        android:name="com.beautynote.MainApplication"
+17-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:8:13-44
+18        android:allowBackup="false"
+18-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:12:13-40
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.0.1] /Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/AndroidManifest.xml:22:18-86
+20        android:debuggable="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:10:13-47
+22        android:label="@string/app_name"
+22-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:9:13-45
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:11:13-58
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme"
+25-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:13:13-44
+26        android:usesCleartextTraffic="true" >
+26-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/debug/AndroidManifest.xml:7:18-53
+27        <activity
+27-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:14:9-23:20
+28            android:name="com.beautynote.MainActivity"
+28-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:15:17-45
+29            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+29-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:17:17-87
+30            android:label="@string/app_name"
+30-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:16:17-49
+31            android:windowSoftInputMode="adjustResize" >
+31-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:18:17-59
+32            <intent-filter>
+32-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:19:13-22:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:20:17-68
+33-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:20:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:21:17-76
+35-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:21:27-74
+36            </intent-filter>
+37        </activity>
+38        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+38-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:24:9-85
+38-->/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:24:19-83
+39
+40        <provider
+40-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:9-18:20
+41            android:name="com.imagepicker.FileProvider"
+41-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-56
+42            android:authorities="com.beautynote.provider"
+42-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-60
+43            android:exported="false"
+43-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
+44            android:grantUriPermissions="true" >
+44-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-47
+45            <meta-data
+45-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-17:58
+46                android:name="android.support.FILE_PROVIDER_PATHS"
+46-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-67
+47                android:resource="@xml/provider_paths" />
+47-->[:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-55
+48        </provider>
+49    </application>
+50
+51</manifest>

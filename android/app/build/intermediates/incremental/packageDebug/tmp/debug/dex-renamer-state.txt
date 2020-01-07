@@ -1,4 +1,4 @@
-#Tue Jan 07 12:56:38 KST 2020
-base.0=/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Tue Jan 07 16:19:40 KST 2020
+base.0=/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

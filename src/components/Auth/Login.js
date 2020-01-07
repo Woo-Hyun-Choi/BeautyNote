@@ -139,7 +139,8 @@ const Login = ({ navigation }) => {
               borderWidth: 0.8,
               borderColor: "#fff",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
+              zIndex:1
             }}
             onPress={() => onLogin()}
           >
@@ -160,7 +161,8 @@ const Login = ({ navigation }) => {
             right: -60,
             left: null,
             top: null,
-            bottom: -50
+            bottom: -50,
+            zIndex:0
           }}
           source={require("../../assets/images/bg-intro-1.png")}
         />

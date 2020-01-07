@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image } from "react-native";
-import Swiper from "react-native-swiper";
+import Swiper from "./react-native-swiper";
 
 export default ({ images }) => {
 	return (
