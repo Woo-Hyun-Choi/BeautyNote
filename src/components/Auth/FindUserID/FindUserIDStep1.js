@@ -12,14 +12,14 @@ import {
 import axios from "axios";
 import { DEV_SERVER } from "../../../setting";
 
-const FindUserIDStep1 = ({navigation}) => {
+const FindUserIDStep1 = ({ navigation }) => {
   const [data, setData] = useState({
     phone: "",
     code: "",
     sent: false
   });
 
-  const [findEmail, setFindEmail] = useState("");
+  const [findEmail, setFindEmail] = useState([]);
 
   const sendVerifyCode = async () => {
     try {
@@ -31,7 +31,10 @@ const FindUserIDStep1 = ({navigation}) => {
 
       if (response.data.message === "SENT") {
         alert("인증번호가 전송되었습니다.");
-        setData({ ...data, sent: true });
+        setData({
+          ...data,
+          sent: true
+        });
       } else {
         alert("올바른 전화번호를 입력해주세요.");
       }
@@ -93,8 +96,8 @@ const FindUserIDStep1 = ({navigation}) => {
       if (response.data.status === "success") {
         alert("인증이 확인되었습니다.");
         console.log("response", response.data.data.email);
-        //우현씨 FindEmail 값을 FindUserID2에 전달해주세요~
         setFindEmail(response.data.data.email);
+        // navigation.push("FindUserIDStep2", {email:response.data.data.email})
       }
     } catch (error) {
       console.log("FindUserIDStep1.js checkVerifyCode Function Error", error);
@@ -109,10 +112,9 @@ const FindUserIDStep1 = ({navigation}) => {
     });
   };
 
-  // 상결
-  // const getEmail=()=>{
-  //   navigation.push("FindUserIDStep2", {email:setFindEmail})
-  // }
+  const Next = () => {
+    navigation.push("FindUserIDStep2", { email: findEmail });
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -124,9 +126,27 @@ const FindUserIDStep1 = ({navigation}) => {
         }}
       >
         {/* 휴대폰번호 */}
-        <View style={{ height: 50, flexDirection: "row", marginVertical: 10 }}>
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <Text style={{ color: "#282828", fontSize: 14 }}>휴대폰번호</Text>
+        <View
+          style={{
+            height: 50,
+            flexDirection: "row",
+            marginVertical: 10
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center"
+            }}
+          >
+            <Text
+              style={{
+                color: "#282828",
+                fontSize: 14
+              }}
+            >
+              휴대폰번호
+            </Text>
           </View>
           {/* 휴대폰 번호 기재란 */}
           <View
@@ -139,7 +159,11 @@ const FindUserIDStep1 = ({navigation}) => {
             }}
           >
             <TextInput
-              style={{ flex: 1, color: "#282828", fontSize: 12.7 }}
+              style={{
+                flex: 1,
+                color: "#282828",
+                fontSize: 12.7
+              }}
               placeholder="- 제외"
               onChangeText={text => onChange(text, "phone")}
             />
@@ -162,7 +186,11 @@ const FindUserIDStep1 = ({navigation}) => {
                 source={require("../../../assets/images/bt_sub_gray.png")}
               >
                 <Text
-                  style={{ fontSize: 10, color: "#fff", textAlign: "center" }}
+                  style={{
+                    fontSize: 10,
+                    color: "#fff",
+                    textAlign: "center"
+                  }}
                 >
                   인증번호 요청
                 </Text>
@@ -172,8 +200,19 @@ const FindUserIDStep1 = ({navigation}) => {
         </View>
 
         {/* 인증번호 입력 */}
-        <View style={{ height: 50, flexDirection: "row", marginVertical: 10 }}>
-          <View style={{ flex: 1, justifyContent: "center" }} />
+        <View
+          style={{
+            height: 50,
+            flexDirection: "row",
+            marginVertical: 10
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center"
+            }}
+          />
           {/* 인증번호 기재란 */}
           <View
             style={{
@@ -185,7 +224,11 @@ const FindUserIDStep1 = ({navigation}) => {
             }}
           >
             <TextInput
-              style={{ flex: 1, color: "#282828", fontSize: 12.7 }}
+              style={{
+                flex: 1,
+                color: "#282828",
+                fontSize: 12.7
+              }}
               placeholder="인증번호 입력"
               onChangeText={text => onChange(text, "code")}
             />
@@ -208,7 +251,11 @@ const FindUserIDStep1 = ({navigation}) => {
                 source={require("../../../assets/images/bt_sub_rad.png")}
               >
                 <Text
-                  style={{ fontSize: 10, color: "#fff", textAlign: "center" }}
+                  style={{
+                    fontSize: 10,
+                    color: "#fff",
+                    textAlign: "center"
+                  }}
                 >
                   인증번호 확인
                 </Text>
@@ -237,12 +284,19 @@ const FindUserIDStep1 = ({navigation}) => {
             borderRadius: 10,
             backgroundColor: "#be1d2d"
           }}
-          onPress={()=> getEmail()}
+          onPress={() => Next()}
         >
-          <Text style={{ color: "#fff", fontSize: 16, fontWeight: "700" }}>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 16,
+              fontWeight: "700"
+            }}
+          >
             확인
           </Text>
         </TouchableOpacity>
+
         <View style={{ height: 66 }} />
       </View>
     </SafeAreaView>

@@ -17,7 +17,7 @@ import WriteContext from "../../context/write.context";
 const { width, height } = Dimensions.get("window");
 
 const options = {
-  title: "프로필 사진 설정",
+  title: "등록 이미지를 선택해주세요.",
   storageOptions: {
     skipBackup: true,
     path: "images"
@@ -202,6 +202,41 @@ const EditStep2 = ({navigation}) => {
       </View>
     </SafeAreaView>
   );
+};
+
+EditStep2.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>게시글 등록</Text>
+      </View>
+    ),
+    headerStyle: {
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
+    },
+    headerLeft: (
+      <TouchableOpacity
+        style={{ flex: 1, justifyContent: "flex-start" }}
+        onPress={() => navigation.goBack(null)}
+      >
+        <Image
+          resizeMode="contain"
+          style={{width:24, height:24, marginLeft:10}}
+          source={require("../../assets/images/bt_back.png")}
+        />
+      </TouchableOpacity>
+    ),
+    headerRight:<View/>
+  };
 };
 
 export default EditStep2;

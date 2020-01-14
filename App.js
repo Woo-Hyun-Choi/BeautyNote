@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       {status && (
         <GlobalProvider>
           <WriteProvider>

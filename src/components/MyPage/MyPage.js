@@ -262,14 +262,14 @@ const MyPage = ({navigation}) => {
                 {profile.board_list.map(data => (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.push("MyPageDetail", {
+                      navigation.navigate("MyPageDetail", {
                         board_no: profile.board_no
                       })
                     }
                     key={data.board_no}
                   >
                     <Image
-                      resizeMode="contain"
+                      // resizeMode="contain"
                       style={{
                         width: width / 3.1,
                         height: width / 3.1,
@@ -288,35 +288,29 @@ const MyPage = ({navigation}) => {
     </SafeAreaView>
   );
 };
+
 MyPage.navigationOptions = props => {
   const { navigation } = props;
-
   return {
-    // headerTitle: (
-    // 	<View style={styles.title}>
-    // 	  <Text numberOfLines={1} style={styles.title_Text}>
-    // 		카테고리 항목
-    // 	  </Text>
-    // 	</View>
-    //   ),
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>내정보</Text>
+      </View>
+    ),
     headerStyle: {
-      borderBottomWidth: 0.5,
-      borderColor: "#e2e2e2",
-      backgroundColor: "#fff",
-      elevation: 0,
-      shadowOpacity: 0
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
     },
-    //   headerLeft: (
-    // 	<TouchableOpacity
-    // 	  style={styles.touch_header}
-    // 	  onPress={() => navigation.goBack(null)}
-    // 	>
-    // 	  <Image
-    // 		style={styles.backButton}
-    // 		source={require("assets/bt-esc.png")}
-    // 	  />
-    // 	</TouchableOpacity>
-    //   ),
+    headerLeft: (
+      <View/>
+    ),
     headerRight: (
       <TouchableOpacity
         style={{ flex: 1, alignItems: "flex-end",paddingRight:10  }}

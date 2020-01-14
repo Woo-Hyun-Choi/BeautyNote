@@ -8,7 +8,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  RefreshControl
+  RefreshControl,
+  TouchableWithoutFeedback
 } from "react-native";
 import Swiper from "../Swiper/Swiper";
 import axios from "axios";
@@ -138,7 +139,7 @@ const MainPage = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 , paddingTop:15 }}>
       {/* 검색창 */}
       <View
         style={{
@@ -201,7 +202,7 @@ const MainPage = ({ navigation }) => {
               style={{
                 display: "flex",
                 backgroundColor: "#fff",
-                marginTop: 5
+                marginVertical: 3
               }}
               key={data.board_no}
             >
@@ -330,11 +331,19 @@ const MainPage = ({ navigation }) => {
                   </Text>
                   <View style={{ width: 10, height: null }} />
                   {/* 댓글 */}
-                  <Image
-                    resizeMode="contain"
-                    style={{ width: 20, height: 20, marginHorizontal: 10 }}
-                    source={require("../../assets/images/bt_chatting.png")}
-                  />
+                  <TouchableWithoutFeedback
+                    onPress={() =>
+                      navigation.push("NewPeedDetailPage", {
+                        board_no: data.board_no
+                      })
+                    }
+                  >
+                    <Image
+                      resizeMode="contain"
+                      style={{ width: 20, height: 20, marginHorizontal: 10 }}
+                      source={require("../../assets/images/bt_chatting.png")}
+                    />
+                  </TouchableWithoutFeedback>
                   <Text
                     style={{
                       fontSize: 10.7,

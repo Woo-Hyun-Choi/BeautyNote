@@ -9,16 +9,15 @@ import {
 } from "react-native";
 
 const FindUserIDStep2 = ({ navigation }) => {
-  // 상결
-  //   const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
+    const getEmail = navigation.getParam("email");
+    console.log("Step2 getEmail is " + getEmail)
 
-  //   useEffect(() => {
-  //     if (data === null) {
-  //       const getEmail = navigation.getParam("email");
-  // 	  setData(getEmail);
-  // 	  console.log("Step2" + getEmail)
-  //     }
-  //   }, []);
+    useEffect(() => {
+      if (data === null) {
+  	  setData(getEmail);
+      }
+    }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -56,24 +55,39 @@ const FindUserIDStep2 = ({ navigation }) => {
                 해당 핸드폰 번호로 가입된{"\n"}아이디 정보는 아래와 같습니다.
               </Text>
               {/* 회원가입 바로가기 버튼 */}
-              <View
-                style={{
-                  width: "80%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: "#f5f5f5",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Text
+              {getEmail !== null ? (
+                <View
                   style={{
-                    color: "#949494"
+                    width: "80%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: "#f5f5f5",
+                    justifyContent: "center",
+                    alignItems: "center"
                   }}
                 >
-                  {/* {data.getEmail} */}
-                </Text>
-              </View>
+                  <Text
+                    style={{
+                      color: "#949494"
+                    }}
+                  >
+                    {getEmail}
+                  </Text>
+                </View>
+              ) : (
+                <View
+                  style={{
+                    width: "80%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: "#f5f5f5",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text style={{ fontSize: 16 }}>가입 정보가 없습니다</Text>
+                </View>
+              )}
             </View>
           </View>
           {/* 하단 컨테이너 */}
@@ -95,6 +109,7 @@ const FindUserIDStep2 = ({ navigation }) => {
                 borderRadius: 10,
                 backgroundColor: "#be1d2d"
               }}
+              onPress={()=>navigation.navigate("Login")}
             >
               <Text
                 style={{

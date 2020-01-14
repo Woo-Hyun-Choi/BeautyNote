@@ -5,8 +5,8 @@ INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidMani
 INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:1:1-27:12
 INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:1:1-27:12
 MERGED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml:1:1-27:12
-MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:@react-native-community_async-storage] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-reanimated] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -148,10 +148,10 @@ uses-sdk
 INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/choi/Desktop/BeautyNote-WH/android/app/src/main/AndroidManifest.xml
-MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_async-storage] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_async-storage] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_viewpager] /Users/choi/Desktop/BeautyNote-WH/node_modules/@react-native-community/viewpager/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-image-picker] /Users/choi/Desktop/BeautyNote-WH/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41

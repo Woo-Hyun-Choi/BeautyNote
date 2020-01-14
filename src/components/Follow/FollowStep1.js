@@ -6,14 +6,30 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl
 } from "react-native";
 import { GET_USER_TOKEN } from "../../lib/getToken";
 import axios from "axios";
 import { DEV_SERVER } from "../../setting";
 
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
 const FollowStep1 = ({ navigation }) => {
   const [followList, setFollowList] = useState([]);
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(1000).then(() => setRefreshing(false));
+    getFollowingList();
+  }, [refreshing]);
 
   useEffect(() => {
     getFollowingList();
@@ -73,7 +89,12 @@ const FollowStep1 = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
           {/* 친구 목록 리스트 */}
           {followList.map(data => (
             <View
@@ -166,8 +187,38 @@ const FollowStep1 = ({ navigation }) => {
   );
 };
 
-FollowStep1.navigationOptions = {
-  title: "팔로잉"
+FollowStep1.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>팔로잉</Text>
+      </View>
+    ),
+    headerStyle: {
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
+    }
+    // headerLeft: (
+    //   <TouchableOpacity
+    //     style={{ flex: 1, justifyContent: "flex-start" }}
+    //     onPress={() => navigation.goBack(null)}
+    //   >
+    //     <Image
+    //       resizeMode="contain"
+    //       style={{width:24, height:24, marginLeft:10}}
+    //       source={require("../../assets/images/bt_back.png")}
+    //     />
+    //   </TouchableOpacity>
+    // )
+  };
 };
 
 const styles = StyleSheet.create({

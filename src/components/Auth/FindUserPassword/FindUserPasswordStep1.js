@@ -103,10 +103,6 @@ const FindUserPasswordStep1 = ({ navigation }) => {
       if (response.data.status === "success") {
         alert("인증이 확인되었습니다.");
         console.log("response", response.data.data);
-        // setData({
-        // 	...data,
-        // 	verifySMSAuth: true
-        // })
       }
     } catch (error) {
       console.log("FindUserPasswordStep1.js callAPI Function Error", error);

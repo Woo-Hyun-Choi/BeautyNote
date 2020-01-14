@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import {
   SafeAreaView,
   Image,
-  ImageBackground,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,11 +16,23 @@ import WriteContext from "../../context/write.context";
 import GlobalContext from "../../context/global.context";
 
 const { width, height } = Dimensions.get("window");
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 const EditStep1 = ({ navigation }) => {
   const [content, setContent] = useState("");
   const { globalData, setGlobalData } = useContext(GlobalContext);
   const { writeData, setWriteData } = useContext(WriteContext);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(1000).then(() => setRefreshing(false));
+  }, [refreshing]);
 
   const saveComment = () => {
     setWriteData({
@@ -59,8 +71,8 @@ const EditStep1 = ({ navigation }) => {
                 flexDirection: "row",
                 paddingVertical: 20,
                 paddingHorizontal: 15,
-                borderBottomColor: "#e2e2e2",
-                borderBottomWidth: 0.5
+                // borderBottomColor: "#e2e2e2",
+                // borderBottomWidth: 0.5
               }}
             >
               {/* 작성자 프로필 사진 */}
@@ -103,6 +115,9 @@ const EditStep1 = ({ navigation }) => {
               contentContainerStyle={{ flex: 1, width: "100%", height: "100%" }}
               keyboardDismissMode="on-drag"
               keyboardShouldPersistTaps="never"
+              refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }
             >
               {/* 게시물 내용 */}
               <View
@@ -157,6 +172,41 @@ const EditStep1 = ({ navigation }) => {
       </SafeAreaView>
     </KeyboardAvoidingView>
   );
+};
+
+EditStep1.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>게시글 등록</Text>
+      </View>
+    ),
+    headerStyle: {
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
+    },
+    headerLeft: (
+      <TouchableOpacity
+        style={{ flex: 1, justifyContent: "flex-start" }}
+        onPress={() => navigation.goBack(null)}
+      >
+        <Image
+          resizeMode="contain"
+          style={{width:24, height:24, marginLeft:10}}
+          source={require("../../assets/images/bt_back.png")}
+        />
+      </TouchableOpacity>
+    ),
+    headerRight:<View/>
+  };
 };
 
 export default EditStep1;

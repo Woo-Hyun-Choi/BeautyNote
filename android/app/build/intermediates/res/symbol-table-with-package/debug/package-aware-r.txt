@@ -623,6 +623,7 @@ drawable notify_panel_notification_icon_bg
 drawable redbox_top_border_background
 drawable src_assets_images_bgintro1
 drawable src_assets_images_bt_add_image
+drawable src_assets_images_bt_back
 drawable src_assets_images_bt_chatting
 drawable src_assets_images_bt_check_n
 drawable src_assets_images_bt_check_t

@@ -102,7 +102,8 @@ const Login = ({ navigation }) => {
                 fontSize: 16,
                 fontWeight: "100",
                 borderBottomWidth: 0.5,
-                borderBottomColor: "#fff"
+                borderBottomColor: "#fff",
+                zIndex:1
               }}
               autoCapitalize="none"
               returnKeyType={"next"}
@@ -120,7 +121,8 @@ const Login = ({ navigation }) => {
                 fontSize: 16,
                 fontWeight: "100",
                 borderBottomWidth: 0.5,
-                borderBottomColor: "#fff"
+                borderBottomColor: "#fff",
+                zIndex:1
               }}
               placeholder="비밀번호를 입력해주세요!"
               placeholderTextColor={"#bababa"}
@@ -162,7 +164,7 @@ const Login = ({ navigation }) => {
             left: null,
             top: null,
             bottom: -50,
-            zIndex:0
+            zIndex:-1
           }}
           source={require("../../assets/images/bg-intro-1.png")}
         />
@@ -194,7 +196,7 @@ const Login = ({ navigation }) => {
             >
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 12,
                   fontWeight: "400",
                   textAlign: "right",
                   color: "#fff"
@@ -218,7 +220,7 @@ const Login = ({ navigation }) => {
             >
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 12,
                   fontWeight: "400",
                   textAlign: "center",
                   color: "#fff"
@@ -243,7 +245,7 @@ const Login = ({ navigation }) => {
             >
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 12,
                   fontWeight: "400",
                   textAlign: "left",
                   color: "#fff"

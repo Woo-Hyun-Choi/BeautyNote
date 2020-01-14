@@ -9,7 +9,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  RefreshControl
 } from "react-native";
 import Swiper from "../Swiper/Swiper";
 import { GET_USER_TOKEN } from "../../lib/getToken";
@@ -17,13 +18,27 @@ import axios from "axios";
 import { DEV_SERVER } from "../../setting";
 import GlobalContext from "../../context/global.context";
 
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
 const MainPageDetail = ({ navigation }) => {
   const [detail, setDetail] = useState(null);
   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
   const [board_no, setBoard_no] = useState(null);
   const { globalData, setGlobalData } = useContext(GlobalContext);
+  const [refreshing, setRefreshing] = React.useState(false);
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    
+    wait(500).then(() => setRefreshing(false));
+    getDetailList();
+  }, [refreshing]);
+  
   useEffect(() => {
     if (board_no === null) {
       const getBoard_no = navigation.getParam("board_no");
@@ -113,7 +128,7 @@ const MainPageDetail = ({ navigation }) => {
           alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
         }
       } else {
-        alert("댓글으 입력해주세요.");
+        alert("댓글을 입력해주세요.");
       }
     } catch (error) {
       console.log("MainpageDetail.js writeComment Function Error", error);
@@ -134,19 +149,24 @@ const MainPageDetail = ({ navigation }) => {
         }
       );
 
-      if (response.data.status === "SUCCESS") {
-        console.log("board_no", detail);
+      console.log("1", response.data);
 
+      if (response.data.status === "success") {
+        
         const edit = detail.map(data =>
           data.board_no === board_no
-            ? {
-                ...data,
-                is_like: response.data.message
-              }
-            : data
-        );
-
-        setDetail(edit);
+          ? {
+            ...data,
+            is_like: response.data.message,
+            like_num:
+            response.data.message === "LIKED"
+            ? data.like_num + 1
+            : data.like_num - 1
+          }
+          : data
+          );
+          
+          setDetail(edit); 
       }
     } catch (error) {
       console.log("MainPage.js onLike Function Error", error);
@@ -190,7 +210,12 @@ const MainPageDetail = ({ navigation }) => {
       {/* 뉴스피드(게시물) */}
       {detail !== null && (
         <View style={styles.bottom_container}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+          >
             {/* 게시물 */}
             <View
               style={{
@@ -234,16 +259,20 @@ const MainPageDetail = ({ navigation }) => {
                       alignSelf: "center"
                     }}
                   >
-                    {/* 이름 */}
-                    <Text
-                      style={{
-                        color: "#282828",
-                        fontSize: 12,
-                        fontWeight: "700"
-                      }}
+                    <TouchableOpacity
+                      onPress={() => getOtherUserInfo(detail.following_no)}
                     >
-                      {detail.writer.nickname}
-                    </Text>
+                      {/* 이름 */}
+                      <Text
+                        style={{
+                          color: "#282828",
+                          fontSize: 12,
+                          fontWeight: "700"
+                        }}
+                      >
+                        {detail.writer.nickname}
+                      </Text>
+                    </TouchableOpacity>
                     {/* 팔로잉 버튼 */}
                     {detail.follow === "CANCELED" ? (
                       <TouchableOpacity
@@ -300,7 +329,7 @@ const MainPageDetail = ({ navigation }) => {
                 >
                   {/* 좋아요 */}
                   {detail.is_like === "LIKED" ? (
-                    <TouchableOpacity onPress={() => onLike(detail.board_no)}>
+                    <TouchableOpacity onPress={() => onLike(detail.board_no)} onPressOut={()=> onRefresh()}>
                       <Image
                         resizeMode="contain"
                         style={{ width: 20, height: 20, marginHorizontal: 10 }}
@@ -308,7 +337,7 @@ const MainPageDetail = ({ navigation }) => {
                       />
                     </TouchableOpacity>
                   ) : (
-                    <TouchableOpacity onPress={() => onLike(detail.board_no)}>
+                    <TouchableOpacity onPress={() => onLike(detail.board_no)} onPressOut={()=> onRefresh()}>
                       <Image
                         resizeMode="contain"
                         style={{ width: 20, height: 20, marginHorizontal: 10 }}
@@ -429,16 +458,20 @@ const MainPageDetail = ({ navigation }) => {
                       key={data.comment_no}
                     >
                       {/* 댓글 작성자 Profile Image */}
-                      <Image
-                        style={{
-                          width: 46.7,
-                          height: 46.7,
-                          borderRadius: 40,
-                          marginRight: 8.7,
-                          alignSelf: "center"
-                        }}
-                        source={{ uri: data.writer.img }}
-                      />
+                      <TouchableOpacity
+                        onPress={() => getOtherUserInfo(detail.following_no)}
+                      >
+                        <Image
+                          style={{
+                            width: 46.7,
+                            height: 46.7,
+                            borderRadius: 40,
+                            marginRight: 8.7,
+                            alignSelf: "center"
+                          }}
+                          source={{ uri: data.writer.img }}
+                        />
+                      </TouchableOpacity>
                       {/* 댓글 작성자 이름, 댓글 내용, 댓글 작성시간 */}
                       <View style={{ flex: 1, width: "100%" }}>
                         <View
@@ -450,21 +483,28 @@ const MainPageDetail = ({ navigation }) => {
                           {/* 댓글 작성자, 댓글 내용 */}
                           <View
                             style={{
-                              flexDirection: "row"
+                              flexDirection: "row",                            
+                              alignItems:"center"
                             }}
                           >
                             {/* 작성자 */}
-                            <Text
-                              style={{
-                                maxWidth: 60,
-                                fontSize: 12,
-                                color: "#282828",
-                                marginHorizontal: 5,
-                                alignSelf: "center"
-                              }}
+                            <TouchableOpacity
+                              onPress={() =>
+                                getOtherUserInfo(detail.following_no)
+                              }
                             >
-                              {data.writer.nickname}
-                            </Text>
+                              <Text
+                                style={{
+                                  maxWidth: 80,
+                                  fontSize: 12,
+                                  color: "#282828",
+                                  marginHorizontal: 5,
+                                  alignSelf: "center"
+                                }}
+                              >
+                                {data.writer.nickname}
+                              </Text>
+                            </TouchableOpacity>
                             {/* 댓글 내용 */}
                             <Text
                               style={{
@@ -497,7 +537,7 @@ const MainPageDetail = ({ navigation }) => {
             </View>
           </ScrollView>
 
-          <KeyboardAvoidingView behavior="padding">
+          <KeyboardAvoidingView>
             {/* 댓글 작성, 게시 버튼 */}
             <View
               style={{
@@ -538,7 +578,7 @@ const MainPageDetail = ({ navigation }) => {
                       flex: 1,
                       paddingHorizontal: 10,
                       color: "#282828",
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: "700"
                     }}
                     placeholder="댓글 달기"
@@ -546,6 +586,7 @@ const MainPageDetail = ({ navigation }) => {
                     keyboardAppearance="dark"
                     onChangeText={text => setComment(text)}
                     value={comment}
+                    multiline={true}
                   />
                   {/* 게시 버튼 */}
                   <TouchableOpacity
@@ -572,6 +613,41 @@ const MainPageDetail = ({ navigation }) => {
       )}
     </SafeAreaView>
   );
+};
+
+MainPageDetail.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>게시글</Text>
+      </View>
+    ),
+    headerStyle: {
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
+    },
+    headerLeft: (
+      <TouchableOpacity
+        style={{ flex: 1, justifyContent: "flex-start" }}
+        onPress={() => navigation.goBack(null)}
+      >
+        <Image
+          resizeMode="contain"
+          style={{width:24, height:24, marginLeft:10}}
+          source={require("../../assets/images/bt_back.png")}
+        />
+      </TouchableOpacity>
+    ),
+    headerRight:<View/>
+  };
 };
 
 const styles = StyleSheet.create({

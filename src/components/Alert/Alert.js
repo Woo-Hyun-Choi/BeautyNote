@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default function App() {
+export default function Alert() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -63,8 +63,8 @@ export default function App() {
                       alignSelf: "center"
                     }}
                   >
-                    <Text style={{ fontWeight: "800" }}>작성자입니다.</Text>
-                    님이 내 게시물에 "좋아요"를 눌렀습니다.
+                    <Text style={{ fontWeight: "900" }}>작성자</Text>
+                    님이 내 게시물에 좋아요를 눌렀습니다.
                   </Text>
                 </View>
                 {/* 알람 시간 */}
@@ -86,7 +86,43 @@ export default function App() {
       </View>
     </SafeAreaView>
   );
-}
+};
+
+Alert.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text style={{ fontSize: 15.3, color: "#2b2b2b" }}>알림</Text>
+      </View>
+    ),
+    headerStyle: {
+      borderBottomWidth: 1,
+      borderBottomColor:"#e2e2e2",
+      elevation: 0
+    },
+    // headerLeft: (
+    //   <TouchableOpacity
+    //     style={{ flex: 1, justifyContent: "flex-start" }}
+    //     onPress={() => navigation.goBack(null)}
+    //   >
+    //     <Image
+    //       resizeMode="contain"
+    //       style={{width:24, height:24, marginLeft:10}}
+    //       source={require("../../assets/images/bt_back.png")}
+    //     />
+    //   </TouchableOpacity>
+    // ),
+    // headerRight:<View/>
+  };
+};
+
 
 const styles = StyleSheet.create({
   container: {

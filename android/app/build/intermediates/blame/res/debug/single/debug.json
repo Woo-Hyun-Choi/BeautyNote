@@ -552,6 +552,10 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/switch_thumb_material_dark.xml"
     },
     {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_bt_back.png.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_bt_back.png"
+    },
+    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
     },
