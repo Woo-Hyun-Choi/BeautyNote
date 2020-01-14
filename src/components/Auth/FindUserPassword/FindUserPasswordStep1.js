@@ -20,6 +20,8 @@ const FindUserPasswordStep1 = ({ navigation }) => {
     sent: false
   });
 
+  const [ findPassword, setFindPassword] = useState([]);
+
   const sendVerifyCode = async () => {
     try {
       if (data.email !== "") {
@@ -42,7 +44,7 @@ const FindUserPasswordStep1 = ({ navigation }) => {
         alert("이메일을 입력해주세요.");
       }
     } catch (error) {
-      console.log("FindUserIDStep1.js SendVerifyCode Function Error", error);
+      console.log("FindUserPasswordStep1.js SendVerifyCode Function Error", error);
       alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
     }
   };
@@ -50,10 +52,11 @@ const FindUserPasswordStep1 = ({ navigation }) => {
   const checkVerifyCode = async () => {
     try {
       if (data.sent) {
-        const { phone, code } = data;
+        const { email, phone, code } = data;
         const response = await axios.post(
           `${DEV_SERVER}/Account/verifySMSAuth`,
           {
+            email,
             phone,
             code,
             type: "PASSWORD"
@@ -70,21 +73,22 @@ const FindUserPasswordStep1 = ({ navigation }) => {
         }
 
         if (response.data.status === "success") {
-          callAPI({ phone, code });
+          callAPI({ email, phone, code });
         }
       } else {
         alert("인증번호를 요청해주세요.");
       }
     } catch (error) {
-      console.log("SignUp.js checkVerifyCode Error", error);
+      console.log("FindUserPasswordStep1.js checkVerifyCode Error", error);
       alert("에러가 발생했습니다. 잠시후에 다시 시도해주세요.");
     }
   };
 
-  const callAPI = async ({ phone, code }) => {
-    console.log({ phone, code });
+  const callAPI = async ({ email, phone, code }) => {
+    console.log({ email, phone, code });
     try {
       const response = await axios.post(`${DEV_SERVER}/Account/findPassword`, {
+        email,
         phone,
         code,
         type: "PASSWORD"
@@ -99,10 +103,11 @@ const FindUserPasswordStep1 = ({ navigation }) => {
       } else if (response.data.message === "NoData") {
         alert("인증번호를 다시 요청해주세요.");
       }
-
+      console.log("response1", response.data.data);
       if (response.data.status === "success") {
         alert("인증이 확인되었습니다.");
-        console.log("response", response.data.data);
+        console.log("response2", response.data.data);
+        setFindPassword(response.data.data)
       }
     } catch (error) {
       console.log("FindUserPasswordStep1.js callAPI Function Error", error);
@@ -115,6 +120,10 @@ const FindUserPasswordStep1 = ({ navigation }) => {
       ...data,
       [type]: text
     });
+  };
+
+  const Next = () => {
+    navigation.push("FindUserPasswordStep2", { Password: findPassword });
   };
 
   return (
@@ -264,7 +273,7 @@ const FindUserPasswordStep1 = ({ navigation }) => {
             borderRadius: 10,
             backgroundColor: "#be1d2d"
           }}
-          onPress={() => navigation.push("FindUserPasswordStep2")}
+          onPress={() => Next()}
         >
           <Text style={{ color: "#fff", fontSize: 16, fontWeight: "700" }}>
             다음

@@ -1,27 +1,43 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   View,
   Text,
   TextInput,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import axios from "axios";
 import { DEV_SERVER } from "../../../setting";
 
-const dummy = {
-  account_no: 16,
-  pwToken: "35175599701726791156"
-};
+// const dummy = {
+//   account_no: 16,
+//   pwToken: "35175599701726791156"
+// };
 
-const FindUserPasswordStep2 = () => {
+const FindUserPasswordStep2 = ({navigation}) => {
   const [data, setData] = useState({
     newPassword: "",
     confirmPassword: ""
   });
+
+  const getPassword = navigation.getParam("Password");
+  
+  const Password = {
+    account_no: getPassword.account_no,
+    pwToken: getPassword.pwToken
+  }
+  console.log("Step2 getPassword is " + getPassword)
+
+  useEffect(() => {
+    if (data === null) {
+    setData(getPassword);
+    }
+  }, []);
+
 
   const onChange = (text, type) => {
     setData({
@@ -33,7 +49,7 @@ const FindUserPasswordStep2 = () => {
   const changePassword = async () => {
     try {
       const { password, confirmPassword } = data;
-      const { pwToken, account_no } = dummy;
+      const { pwToken, account_no } = Password;
       console.log({
         password,
         confirmPassword,
@@ -49,7 +65,12 @@ const FindUserPasswordStep2 = () => {
         });
 
         if (response.data.message === "Inserted") {
-          alert("비밀번호 변경이 완료되었습니다.");
+          Alert.alert(
+            "알림",
+            "비밀번호 변경이 완료되었습니다.",
+            [{ text: "확인", onPress: () => navigation.navigate("Login") }],
+            { cancelable: false }
+          );
         } else {
           alert("요청에 문제가 있습니다.");
         }

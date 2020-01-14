@@ -34,7 +34,7 @@ const options = {
   tintColor: "#ff"
 };
 
-const MyPage = ({navigation}) => {
+const MyPage = ({ navigation }) => {
   const [lists, setLists] = useState([]);
   const [profile, setProfile] = useState(null);
 
@@ -42,7 +42,7 @@ const MyPage = ({navigation}) => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    
+
     wait(2000).then(() => setRefreshing(false));
     getMyProfile();
   }, [refreshing]);
@@ -53,7 +53,6 @@ const MyPage = ({navigation}) => {
 
   const getMyProfile = async () => {
     try {
-      console.log("response = " + response)
       const Authorization = await GET_USER_TOKEN();
       const response = await axios.post(
         `${DEV_SERVER}/Profile/getUserProfile`,
@@ -63,8 +62,12 @@ const MyPage = ({navigation}) => {
             Authorization
           }
         }
-        );
-        
+      );
+
+      console.log("response = " + response.data.data.img);
+      console.log("response = " + response.data.data.nickname);
+      console.log("response = " + response.data.data.email);
+      console.log("response = " + response.data.data.board_list);
       setProfile(response.data.data);
     } catch (error) {
       console.log("MyPage.js getMyProfile Function Error", error);
@@ -122,7 +125,7 @@ const MyPage = ({navigation}) => {
 
       if (response.data.data) {
         updateProfile(response.data.data.file_no);
-        console.log(response.data.data)
+        console.log(response.data.data);
       } else {
         alert("파일을 추가 할 수 없습나디.");
       }
@@ -183,7 +186,13 @@ const MyPage = ({navigation}) => {
                     borderRadius: 40,
                     marginRight: 8.7
                   }}
-                  source={{ uri: profile.img !== null ? profile.img : "" }}
+                  source={{
+                    uri:
+                      profile.img !== null
+                        ? profile.img
+                        : "https://image.shutterstock.com/image-vector/man-icon-vector-260nw-1040084344.jpg"
+                  }}
+                  // source={{ uri: profile.img} !== null ? { uri: profile.img} : require("../../assets/images/main_mypage_n.png")}
                 />
                 {/* 이름, 이메일 주소, 편집 버튼 */}
                 <View style={{ flex: 1 }}>
@@ -253,33 +262,35 @@ const MyPage = ({navigation}) => {
                   flexDirection: "row",
                   flexWrap: "wrap"
                 }}
-                // onPress={() =>
-                //   navigation.push("NewPeedDetailPage", {
-                //     board_no: profile.board_no
-                //   })
-                // }
               >
-                {profile.board_list.map(data => (
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate("MyPageDetail", {
-                        board_no: profile.board_no
-                      })
-                    }
-                    key={data.board_no}
-                  >
-                    <Image
-                      // resizeMode="contain"
-                      style={{
-                        width: width / 3.1,
-                        height: width / 3.1,
-                        margin: width / 200
-                      }}
-                      source={{ uri: data.img }}
+                {profile.board_list !== undefined ? (
+                  profile.board_list.map(data => (
+                    <TouchableOpacity
+                      // onPress={() =>
+                      //   navigation.navigate("MyPageDetail", {
+                      //     board_no: profile.board_no
+                      //   })
+                      // }
                       key={data.board_no}
-                    />
-                  </TouchableOpacity>
-                ))}
+                    >
+                      <Image
+                        style={{
+                          width: width / 3.1,
+                          height: width / 3.1,
+                          margin: width / 200
+                        }}
+                        source={{ uri: data.img }}
+                        key={data.board_no}
+                      />
+                    </TouchableOpacity>
+                  ))
+                ) : (
+                  <View style={{ padding: 20 }}>
+                    <Text style={{ fontSize: 16 }}>
+                      등록된 게시물이 없습니다.
+                    </Text>
+                  </View>
+                )}
               </View>
             </ScrollView>
           </React.Fragment>
@@ -305,15 +316,13 @@ MyPage.navigationOptions = props => {
     ),
     headerStyle: {
       borderBottomWidth: 1,
-      borderBottomColor:"#e2e2e2",
+      borderBottomColor: "#e2e2e2",
       elevation: 0
     },
-    headerLeft: (
-      <View/>
-    ),
+    headerLeft: <View />,
     headerRight: (
       <TouchableOpacity
-        style={{ flex: 1, alignItems: "flex-end",paddingRight:10  }}
+        style={{ flex: 1, alignItems: "flex-end", paddingRight: 10 }}
         onPress={() => navigation.navigate("Settings")}
       >
         <Image
