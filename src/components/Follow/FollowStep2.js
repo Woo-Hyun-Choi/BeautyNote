@@ -18,6 +18,7 @@ const { width, height } = Dimensions.get("window");
 const FollowStep2 = ({ navigation }) => {
   const [data, setData] = useState(null);
   const [account_no, setAccount_no] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     if (data === null && account_no === null) {
@@ -76,9 +77,37 @@ const FollowStep2 = ({ navigation }) => {
     }
   };
 
+  const getMyProfile = async () => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/Profile/getUserProfile`,
+        {},
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
+
+      console.log("response = " + response.data.data.img);
+      console.log("response = " + response.data.data.nickname);
+      console.log("response = " + response.data.data.email);
+      console.log("response = " + response.data.data.board_list);
+      setProfile(response.data.data);
+    } catch (error) {
+      console.log("FollowStep2.js getMyProfile Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+    }
+  };
+
+  useEffect(() => {
+    getMyProfile();
+  }, []);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {data !== null && (
+      {profile !== undefined && data !== null && (
         <View style={styles.container}>
           <View
             style={{
@@ -143,22 +172,24 @@ const FollowStep2 = ({ navigation }) => {
                     </Text>
                   </View>
                   {/* 팔로잉 버튼 */}
-                  {data.following === "CANCELED" ? (
+                  {profile.email !== data.email ? (
                     <TouchableOpacity onPress={() => onFollow(data.following)}>
-                      <Image
-                        resizeMode="contain"
-                        style={{ width: 76, height: 33 }}
-                        source={require("../../assets/images/bt_following_n.png")}
-                      />
+                      {data.following === "CANCELED" ? (
+                        <Image
+                          resizeMode="contain"
+                          style={{ width: 76, height: 33 }}
+                          source={require("../../assets/images/bt_following_n.png")}
+                        />
+                      ) : (
+                        <Image
+                          resizeMode="contain"
+                          style={{ width: 76, height: 33 }}
+                          source={require("../../assets/images/bt_following_t.png")}
+                        />
+                      )}
                     </TouchableOpacity>
                   ) : (
-                    <TouchableOpacity onPress={() => onFollow(data.following)}>
-                      <Image
-                        resizeMode="contain"
-                        style={{ width: 76, height: 33 }}
-                        source={require("../../assets/images/bt_following_t.png")}
-                      />
-                    </TouchableOpacity>
+                    <View />
                   )}
                 </View>
               </View>
@@ -211,7 +242,7 @@ FollowStep2.navigationOptions = props => {
     ),
     headerStyle: {
       borderBottomWidth: 1,
-      borderBottomColor:"#e2e2e2",
+      borderBottomColor: "#e2e2e2",
       elevation: 0
     },
     headerLeft: (
@@ -221,12 +252,12 @@ FollowStep2.navigationOptions = props => {
       >
         <Image
           resizeMode="contain"
-          style={{width:24, height:24, marginLeft:10}}
+          style={{ width: 24, height: 24, marginLeft: 10 }}
           source={require("../../assets/images/bt_back.png")}
         />
       </TouchableOpacity>
     ),
-    headerRight:<View/>
+    headerRight: <View />
   };
 };
 

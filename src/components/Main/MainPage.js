@@ -26,13 +26,15 @@ function wait(timeout) {
 const MainPage = ({ navigation }) => {
   const [lists, setLists] = useState([]);
   const [page_no, setPage_no] = useState(1);
-  const { globalData, setGlobalData } = useContext(GlobalContext);
-  
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [profile, setProfile] = useState(null);
 
+  const { globalData, setGlobalData } = useContext(GlobalContext);
+
+  // 리프레시 컨트롤
+  const [refreshing, setRefreshing] = React.useState(false);
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    
+
     wait(2000).then(() => setRefreshing(false));
     callAPI();
   }, [refreshing]);
@@ -40,9 +42,11 @@ const MainPage = ({ navigation }) => {
   useEffect(() => {
     if (page_no === 1) {
       callAPI();
+      onRefresh();
     }
   }, []);
 
+  // 타임라인 조회
   const callAPI = async () => {
     try {
       const Authorization = await GET_USER_TOKEN();
@@ -66,6 +70,36 @@ const MainPage = ({ navigation }) => {
     }
   };
 
+  // 내 프로필 조회
+  const getMyProfile = async () => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/Profile/getUserProfile`,
+        {},
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
+
+      console.log("response = " + response.data.data.img);
+      console.log("response = " + response.data.data.nickname);
+      console.log("response = " + response.data.data.email);
+      console.log("response = " + response.data.data.board_list);
+      setProfile(response.data.data);
+    } catch (error) {
+      console.log("MainPage.js getMyProfile Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+    }
+  };
+
+  useEffect(() => {
+    getMyProfile();
+  }, []);
+
+  // 다른 사용자 프로필 조회
   const getOtherUserInfo = account_no => {
     navigation.push("OtherUserPage", {
       account_no
@@ -139,7 +173,7 @@ const MainPage = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 , paddingTop:15 }}>
+    <SafeAreaView style={{ flex: 1, paddingTop: 15 }}>
       {/* 검색창 */}
       <View
         style={{
@@ -197,261 +231,276 @@ const MainPage = ({ navigation }) => {
           }
         >
           {/* 게시물 */}
-          {lists.map(data => (
-            <View
-              style={{
-                display: "flex",
-                backgroundColor: "#fff",
-                marginVertical: 3
-              }}
-              key={data.board_no}
-            >
-              {/* 작성자, 팔로잉 버튼 */}
+          {profile !== undefined &&
+            lists.map(data => (
               <View
                 style={{
-                  flexDirection: "row",
-                  marginTop: 20,
-                  marginBottom: 12,
-                  paddingHorizontal: 15
+                  display: "flex",
+                  backgroundColor: "#fff",
+                  marginVertical: 3
                 }}
+                key={data.board_no}
               >
-                {/* 프로필 이미지 */}
-                <TouchableOpacity
-                  onPress={() => getOtherUserInfo(data.following_no)}
+                {/* 작성자, 팔로잉 버튼 */}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 20,
+                    marginBottom: 12,
+                    paddingHorizontal: 15
+                  }}
                 >
-                  <Image
-                    style={{
-                      width: 46.7,
-                      height: 46.7,
-                      borderRadius: 40,
-                      marginRight: 8.7
-                    }}
-                    source={{ uri: data.writer.img }}
-                  />
-                </TouchableOpacity>
-                {/* 이름, 팔로잉 버튼 */}
+                  {/* 프로필 이미지 */}
+                  <TouchableOpacity
+                    onPress={() => getOtherUserInfo(data.following_no)}
+                  >
+                    <Image
+                      style={{
+                        width: 46.7,
+                        height: 46.7,
+                        borderRadius: 40,
+                        marginRight: 8.7
+                      }}
+                      source={{ uri: data.writer.img }}
+                    />
+                    {console.log("data.writer 1 = " + data.writer.img)}
+                  </TouchableOpacity>
 
-                <View style={{ flex: 1 }}>
+                  {/* 이름, 팔로잉 버튼 */}
+                  <View style={{ flex: 1 }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        width: "100%",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        alignSelf: "center"
+                      }}
+                    >
+                      {/* 이름 */}
+                      <Text
+                        style={{
+                          color: "#282828",
+                          fontSize: 12,
+                          fontWeight: "700"
+                        }}
+                      >
+                        {data.writer.nickname}
+                        {console.log("data.writer 2 = " + data.writer.nickname)}
+                      </Text>
+                      {/* 팔로잉 버튼 */}
+                      {profile.nickname !== data.writer.nickname ? (
+                        <TouchableOpacity
+                          onPress={() => onFollow(data.following_no)}
+                        >
+                          {data.follow === "CANCELED" ? (
+                            <Image
+                              resizeMode="contain"
+                              style={{ width: 76, height: 33 }}
+                              source={require("../../assets/images/bt_following_n.png")}
+                            />
+                          ) : (
+                            <Image
+                              resizeMode="contain"
+                              style={{ width: 76, height: 33 }}
+                              source={require("../../assets/images/bt_following_t.png")}
+                            />
+                          )}
+                        </TouchableOpacity>
+                      ) : (
+                        <View />
+                      )}
+                    </View>
+                  </View>
+                </View>
+                {/* 이미지 포스터(Swiper) */}
+                <View
+                  style={{
+                    width: "100%",
+                    height: 360,
+                    backgroundColor: "#000"
+                  }}
+                >
+                  <Swiper images={data.img_list} />
+                </View>
+                {/* 좋아요, 댓글 수, 공유하기 버튼 */}
+                <View
+                  style={{
+                    flex: 1,
+                    height: 60,
+                    paddingHorizontal: 15,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderBottomColor: "#f5f5f5",
+                    borderBottomWidth: 1
+                  }}
+                >
                   <View
                     style={{
                       flex: 1,
-                      width: "100%",
                       flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      alignSelf: "center"
+                      alignItems: "center"
                     }}
                   >
-                    {/* 이름 */}
-                    <Text
-                      style={{
-                        color: "#282828",
-                        fontSize: 12,
-                        fontWeight: "700"
-                      }}
-                    >
-                      {data.writer.nickname}
-                    </Text>
-                    {/* 팔로잉 버튼 */}
-                    {data.follow === "CANCELED" ? (
-                      <TouchableOpacity
-                        onPress={() => onFollow(data.following_no)}
-                      >
+                    {/* 좋아요 */}
+                    {data.is_like === "LIKED" ? (
+                      <TouchableOpacity onPress={() => onLike(data.board_no)}>
                         <Image
                           resizeMode="contain"
-                          style={{ width: 76, height: 33 }}
-                          source={require("../../assets/images/bt_following_n.png")}
+                          style={{
+                            width: 20,
+                            height: 20,
+                            marginHorizontal: 10
+                          }}
+                          source={require("../../assets/images/bt_love_t.png")}
                         />
                       </TouchableOpacity>
                     ) : (
-                      <TouchableOpacity
-                        onPress={() => onFollow(data.following_no)}
-                      >
+                      <TouchableOpacity onPress={() => onLike(data.board_no)}>
                         <Image
                           resizeMode="contain"
-                          style={{ width: 76, height: 33 }}
-                          source={require("../../assets/images/bt_following_t.png")}
+                          style={{
+                            width: 20,
+                            height: 20,
+                            marginHorizontal: 10
+                          }}
+                          source={require("../../assets/images/bt_love_n.png")}
                         />
                       </TouchableOpacity>
                     )}
+                    <Text
+                      style={{
+                        fontSize: 10.7,
+                        color: "#1b1b1b",
+                        textAlign: "center"
+                      }}
+                    >
+                      {data.like_num}명
+                    </Text>
+                    <View style={{ width: 10, height: null }} />
+                    {/* 댓글 */}
+                    <TouchableWithoutFeedback
+                      onPress={() =>
+                        navigation.push("NewPeedDetailPage", {
+                          board_no: data.board_no
+                        })
+                      }
+                    >
+                      <Image
+                        resizeMode="contain"
+                        style={{ width: 20, height: 20, marginHorizontal: 10 }}
+                        source={require("../../assets/images/bt_chatting.png")}
+                      />
+                    </TouchableWithoutFeedback>
+                    <Text
+                      style={{
+                        fontSize: 10.7,
+                        color: "#1b1b1b",
+                        textAlign: "center"
+                      }}
+                    >
+                      {data.comment_num}개
+                    </Text>
+                  </View>
+                  {/* 공유하기 버튼 */}
+                  <View style={{ flex: 1 }}>
+                    <Image
+                      resizeMode="contain"
+                      style={{
+                        width: 20,
+                        height: 20,
+                        marginHorizontal: 10,
+                        alignSelf: "flex-end"
+                      }}
+                      // 추후 수정
+                      // source={require("../../assets/images/bt_share.png")}
+                    />
                   </View>
                 </View>
-              </View>
-              {/* 이미지 포스터(Swiper) */}
-              <View
-                style={{ width: "100%", height: 360, backgroundColor: "#000" }}
-              >
-                <Swiper images={data.img_list} />
-              </View>
-              {/* 좋아요, 댓글 수, 공유하기 버튼 */}
-              <View
-                style={{
-                  flex: 1,
-                  height: 60,
-                  paddingHorizontal: 15,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  borderBottomColor: "#f5f5f5",
-                  borderBottomWidth: 1
-                }}
-              >
+                {/* 게시물 내용 */}
+                <View
+                  style={{
+                    height: 60,
+                    paddingHorizontal: 15,
+                    marginVertical: 20
+                  }}
+                >
+                  <Text
+                    numberOfLines={3}
+                    style={{
+                      fontSize: 12.7,
+                      color: "#282828",
+                      lineHeight: 20
+                    }}
+                  >
+                    {data.content}
+                  </Text>
+                </View>
+                {/* 태그 */}
                 <View
                   style={{
                     flex: 1,
                     flexDirection: "row",
-                    alignItems: "center"
+                    paddingHorizontal: 15,
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap"
                   }}
                 >
-                  {/* 좋아요 */}
-                  {data.is_like === "LIKED" ? (
-                    <TouchableOpacity onPress={() => onLike(data.board_no)}>
-                      <Image
-                        resizeMode="contain"
-                        style={{ width: 20, height: 20, marginHorizontal: 10 }}
-                        source={require("../../assets/images/bt_love_t.png")}
-                      />
-                    </TouchableOpacity>
-                  ) : (
-                    <TouchableOpacity onPress={() => onLike(data.board_no)}>
-                      <Image
-                        resizeMode="contain"
-                        style={{ width: 20, height: 20, marginHorizontal: 10 }}
-                        source={require("../../assets/images/bt_love_n.png")}
-                      />
-                    </TouchableOpacity>
-                  )}
-                  <Text
-                    style={{
-                      fontSize: 10.7,
-                      color: "#1b1b1b",
-                      textAlign: "center"
-                    }}
-                  >
-                    {data.like_num}명
-                  </Text>
-                  <View style={{ width: 10, height: null }} />
-                  {/* 댓글 */}
-                  <TouchableWithoutFeedback
-                    onPress={() =>
-                      navigation.push("NewPeedDetailPage", {
-                        board_no: data.board_no
-                      })
-                    }
-                  >
-                    <Image
-                      resizeMode="contain"
-                      style={{ width: 20, height: 20, marginHorizontal: 10 }}
-                      source={require("../../assets/images/bt_chatting.png")}
-                    />
-                  </TouchableWithoutFeedback>
-                  <Text
-                    style={{
-                      fontSize: 10.7,
-                      color: "#1b1b1b",
-                      textAlign: "center"
-                    }}
-                  >
-                    {data.comment_num}개
-                  </Text>
-                </View>
-                {/* 공유하기 버튼 */}
-                <View style={{ flex: 1 }}>
-                  <Image
-                    resizeMode="contain"
-                    style={{
-                      width: 20,
-                      height: 20,
-                      marginHorizontal: 10,
-                      alignSelf: "flex-end"
-                    }}
-                    // 추후 수정
-                    // source={require("../../assets/images/bt_share.png")}
-                  />
-                </View>
-              </View>
-              {/* 게시물 내용 */}
-              <View
-                style={{
-                  height: 60,
-                  paddingHorizontal: 15,
-                  marginVertical: 20
-                }}
-              >
-                <Text
-                  numberOfLines={3}
-                  style={{
-                    fontSize: 12.7,
-                    color: "#282828",
-                    lineHeight: 20
-                  }}
-                >
-                  {data.content}
-                </Text>
-              </View>
-              {/* 태그 */}
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  paddingHorizontal: 15,
-                  justifyContent: "flex-start",
-                  flexWrap: "wrap"
-                }}
-              >
-                {data.hashTag.split(",").map(tag => (
-                  <View
-                    style={{
-                      display: "flex",
-                      height: 30,
-                      backgroundColor: "#f7f7f7",
-                      marginHorizontal: 4,
-                      alignSelf: "center",
-                      justifyContent: "center",
-                      paddingHorizontal: 6,
-                      flexWrap: "wrap"
-                    }}
-                    key={tag}
-                  >
-                    <Text
+                  {data.hashTag.split(",").map(tag => (
+                    <View
                       style={{
-                        color: "#1b1b1b",
-                        textAlign: "center",
-                        fontSize: 10
+                        display: "flex",
+                        height: 30,
+                        backgroundColor: "#f7f7f7",
+                        marginHorizontal: 4,
+                        alignSelf: "center",
+                        justifyContent: "center",
+                        paddingHorizontal: 6,
+                        flexWrap: "wrap"
                       }}
+                      key={tag}
                     >
-                      {console.log(tag)}
-                      {tag}
-                    </Text>
-                  </View>
-                ))}
-              </View>
+                      <Text
+                        style={{
+                          color: "#1b1b1b",
+                          textAlign: "center",
+                          fontSize: 10
+                        }}
+                      >
+                        {console.log(tag)}
+                        {tag}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
 
-              {/* 게시물 자세히 보기 */}
-              <TouchableOpacity
-                style={{
-                  width: "70%",
-                  height: 50,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  alignSelf: "center",
-                  borderRadius: 10,
-                  backgroundColor: "#be1d2d",
-                  marginVertical: 25
-                }}
-                onPress={() =>
-                  navigation.push("NewPeedDetailPage", {
-                    board_no: data.board_no
-                  })
-                }
-              >
-                <Text
-                  style={{ color: "#fff", fontSize: 16, fontWeight: "600" }}
+                {/* 게시물 자세히 보기 */}
+                <TouchableOpacity
+                  style={{
+                    width: "70%",
+                    height: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    borderRadius: 10,
+                    backgroundColor: "#be1d2d",
+                    marginVertical: 25
+                  }}
+                  onPress={() =>
+                    navigation.push("NewPeedDetailPage", {
+                      board_no: data.board_no
+                    })
+                  }
                 >
-                  게시물 자세히 보기
-                </Text>
-              </TouchableOpacity>
-            </View>
-          ))}
+                  <Text
+                    style={{ color: "#fff", fontSize: 16, fontWeight: "600" }}
+                  >
+                    게시물 자세히 보기
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))}
         </ScrollView>
       </View>
     </SafeAreaView>

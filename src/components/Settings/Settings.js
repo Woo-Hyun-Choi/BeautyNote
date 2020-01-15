@@ -7,7 +7,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Switch
+  Switch,
+  RefreshControl
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -26,9 +27,9 @@ const Settings = ({ navigation }) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    
+    setRefreshing(true);    
     wait(1000).then(() => setRefreshing(false));
+    
   }, [refreshing]);
 
   const logout = async () => {
@@ -50,7 +51,9 @@ const Settings = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false}
+        refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
           {/* 푸시알림 설정 */}
           <View
             style={{

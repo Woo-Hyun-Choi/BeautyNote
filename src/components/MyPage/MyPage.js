@@ -47,10 +47,6 @@ const MyPage = ({ navigation }) => {
     getMyProfile();
   }, [refreshing]);
 
-  useEffect(() => {
-    getMyProfile();
-  }, []);
-
   const getMyProfile = async () => {
     try {
       const Authorization = await GET_USER_TOKEN();
@@ -74,6 +70,10 @@ const MyPage = ({ navigation }) => {
       alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
     }
   };
+
+  useEffect(() => {
+    getMyProfile();
+  }, []);
 
   const updateProfile = async img_no => {
     try {

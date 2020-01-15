@@ -448,8 +448,9 @@ const Signup = ({navigation}) => {
             <View
               style={{
                 flex: 2,
+                display:"flex",
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
                 alignItems: "flex-end"
               }}
             >
@@ -498,7 +499,7 @@ const Signup = ({navigation}) => {
               <Text style={{ fontSize: 15, paddingVertical: 15 }}>
                 약관동의
               </Text>
-              <TouchableOpacity onPress={{}}>
+              <TouchableOpacity>
                 <Image
                   style={{ width: 24, height: 24 }}
                   source={require("../../assets/images/bt_check_t.png")}
@@ -517,7 +518,7 @@ const Signup = ({navigation}) => {
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               {/* {약관.약관.length > 150 ? `${약관.약관.substring(0, 147)}...` : 약관.약관} */}
-              <Text style={{ color: "#be1d2d" }} onPress={{}}>
+              <Text style={{ color: "#be1d2d" }}>
                 더보기 >
               </Text>
             </Text>
@@ -535,7 +536,7 @@ const Signup = ({navigation}) => {
               <Text style={{ fontSize: 15, paddingVertical: 15 }}>
                 약관동의
               </Text>
-              <TouchableOpacity onPress={{}}>
+              <TouchableOpacity >
                 <Image
                   style={{ width: 24, height: 24 }}
                   source={require("../../assets/images/bt_check_n.png")}
@@ -553,7 +554,7 @@ const Signup = ({navigation}) => {
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               {/* {약관.약관.length > 150 ? `${약관.약관.substring(0, 147)}...` : 약관.약관} */}
-              <Text style={{ color: "#be1d2d" }} onPress={{}}>
+              <Text style={{ color: "#be1d2d" }} >
                 더보기 >
               </Text>
             </Text>

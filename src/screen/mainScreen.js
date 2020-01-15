@@ -23,12 +23,6 @@ const NewsPeedStack = createStackNavigator({
   NewPeedDetailPage: {
     screen: MainPageDetail
   },
-  OtherUserPage: {
-    screen: FollowStep2,
-    navigationOptions: {
-      // tabBarLabel: '내정보',
-    }
-  }
 });
 
 const FollowStack = createStackNavigator({
@@ -37,9 +31,6 @@ const FollowStack = createStackNavigator({
   },
   OtherUserPage: {
     screen: FollowStep2,
-    navigationOptions: {
-      // tabBarLabel: '내정보',
-    }
   }
 });
 
@@ -154,8 +145,7 @@ const MainTabs = createBottomTabNavigator(
     MyPage: {
       screen: MyPageStack,
       navigationOptions: {
-        // tabBarLabel: '내정보',
-        tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => (
           <Image
             resizeMode="contain"
             focused={focused}

@@ -31,14 +31,15 @@ const MainPageDetail = ({ navigation }) => {
   const [board_no, setBoard_no] = useState(null);
   const { globalData, setGlobalData } = useContext(GlobalContext);
   const [refreshing, setRefreshing] = React.useState(false);
+  const [profile, setProfile] = useState(null);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    
-    wait(500).then(() => setRefreshing(false));
+
+    wait(300).then(() => setRefreshing(false));
     getDetailList();
   }, [refreshing]);
-  
+
   useEffect(() => {
     if (board_no === null) {
       const getBoard_no = navigation.getParam("board_no");
@@ -152,27 +153,54 @@ const MainPageDetail = ({ navigation }) => {
       console.log("1", response.data);
 
       if (response.data.status === "success") {
-        
         const edit = detail.map(data =>
           data.board_no === board_no
-          ? {
-            ...data,
-            is_like: response.data.message,
-            like_num:
-            response.data.message === "LIKED"
-            ? data.like_num + 1
-            : data.like_num - 1
-          }
-          : data
-          );
-          
-          setDetail(edit); 
+            ? {
+                ...data,
+                is_like: response.data.message,
+                like_num:
+                  response.data.message === "LIKED"
+                    ? data.like_num + 1
+                    : data.like_num - 1
+              }
+            : data
+        );
+
+        setDetail(edit);
       }
     } catch (error) {
       console.log("MainPage.js onLike Function Error", error);
       alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
     }
   };
+
+  const getMyProfile = async () => {
+    try {
+      const Authorization = await GET_USER_TOKEN();
+      const response = await axios.post(
+        `${DEV_SERVER}/Profile/getUserProfile`,
+        {},
+        {
+          headers: {
+            Authorization
+          }
+        }
+      );
+
+      console.log("response = " + response.data.data.img);
+      console.log("response = " + response.data.data.nickname);
+      console.log("response = " + response.data.data.email);
+      console.log("response = " + response.data.data.board_list);
+      setProfile(response.data.data);
+    } catch (error) {
+      console.log("MainPageDetail.js getMyProfile Function Error", error);
+      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+    }
+  };
+
+  useEffect(() => {
+    getMyProfile();
+  }, []);
 
   const getOtherUserInfo = async account_no => {
     navigation.push("OtherUserPage", {
@@ -208,7 +236,7 @@ const MainPageDetail = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* 뉴스피드(게시물) */}
-      {detail !== null && (
+      {profile !== undefined && detail !== null && (
         <View style={styles.bottom_container}>
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -274,26 +302,27 @@ const MainPageDetail = ({ navigation }) => {
                       </Text>
                     </TouchableOpacity>
                     {/* 팔로잉 버튼 */}
-                    {detail.follow === "CANCELED" ? (
+                    {profile.nickname !== detail.writer.nickname &&
+                    profile.img !== detail.writer.img ? (
                       <TouchableOpacity
                         onPress={() => onFollow(detail.following_no)}
                       >
-                        <Image
-                          resizeMode="contain"
-                          style={{ width: 76, height: 33 }}
-                          source={require("../../assets/images/bt_following_n.png")}
-                        />
+                        {detail.follow === "CANCELED" ? (
+                          <Image
+                            resizeMode="contain"
+                            style={{ width: 76, height: 33 }}
+                            source={require("../../assets/images/bt_following_n.png")}
+                          />
+                        ) : (
+                          <Image
+                            resizeMode="contain"
+                            style={{ width: 76, height: 33 }}
+                            source={require("../../assets/images/bt_following_t.png")}
+                          />
+                        )}
                       </TouchableOpacity>
                     ) : (
-                      <TouchableOpacity
-                        onPress={() => onFollow(detail.following_no)}
-                      >
-                        <Image
-                          resizeMode="contain"
-                          style={{ width: 76, height: 33 }}
-                          source={require("../../assets/images/bt_following_t.png")}
-                        />
-                      </TouchableOpacity>
+                      <View />
                     )}
                   </View>
                 </View>
@@ -329,7 +358,10 @@ const MainPageDetail = ({ navigation }) => {
                 >
                   {/* 좋아요 */}
                   {detail.is_like === "LIKED" ? (
-                    <TouchableOpacity onPress={() => onLike(detail.board_no)} onPressOut={()=> onRefresh()}>
+                    <TouchableOpacity
+                      onPress={() => onLike(detail.board_no)}
+                      onPressOut={() => onRefresh()}
+                    >
                       <Image
                         resizeMode="contain"
                         style={{ width: 20, height: 20, marginHorizontal: 10 }}
@@ -337,7 +369,10 @@ const MainPageDetail = ({ navigation }) => {
                       />
                     </TouchableOpacity>
                   ) : (
-                    <TouchableOpacity onPress={() => onLike(detail.board_no)} onPressOut={()=> onRefresh()}>
+                    <TouchableOpacity
+                      onPress={() => onLike(detail.board_no)}
+                      onPressOut={() => onRefresh()}
+                    >
                       <Image
                         resizeMode="contain"
                         style={{ width: 20, height: 20, marginHorizontal: 10 }}
@@ -483,8 +518,8 @@ const MainPageDetail = ({ navigation }) => {
                           {/* 댓글 작성자, 댓글 내용 */}
                           <View
                             style={{
-                              flexDirection: "row",                            
-                              alignItems:"center"
+                              flexDirection: "row",
+                              alignItems: "center"
                             }}
                           >
                             {/* 작성자 */}
@@ -631,7 +666,7 @@ MainPageDetail.navigationOptions = props => {
     ),
     headerStyle: {
       borderBottomWidth: 1,
-      borderBottomColor:"#e2e2e2",
+      borderBottomColor: "#e2e2e2",
       elevation: 0
     },
     headerLeft: (
@@ -641,12 +676,12 @@ MainPageDetail.navigationOptions = props => {
       >
         <Image
           resizeMode="contain"
-          style={{width:24, height:24, marginLeft:10}}
+          style={{ width: 24, height: 24, marginLeft: 10 }}
           source={require("../../assets/images/bt_back.png")}
         />
       </TouchableOpacity>
     ),
-    headerRight:<View/>
+    headerRight: <View />
   };
 };
 
