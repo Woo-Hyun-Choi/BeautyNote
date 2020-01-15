@@ -53,17 +53,9 @@ const MyPage = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Profile/getUserProfile`,
         {},
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
-
-      console.log("response = " + response.data.data.img);
-      console.log("response = " + response.data.data.nickname);
-      console.log("response = " + response.data.data.email);
-      console.log("response = " + response.data.data.board_list);
+      console.log("response.data.data.board_list = " + response.data.data.board_list.board_no);
       setProfile(response.data.data);
     } catch (error) {
       console.log("MyPage.js getMyProfile Function Error", error);
@@ -81,11 +73,7 @@ const MyPage = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Profile/updateProfile`,
         { img_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       if (response.data.status === "SUCCESS") {
@@ -266,11 +254,11 @@ const MyPage = ({ navigation }) => {
                 {profile.board_list !== undefined ? (
                   profile.board_list.map(data => (
                     <TouchableOpacity
-                      // onPress={() =>
-                      //   navigation.navigate("MyPageDetail", {
-                      //     board_no: profile.board_no
-                      //   })
-                      // }
+                      onPress={() =>
+                        navigation.push("MyPageDetail", {
+                          "board_no": data.board_no
+                        })
+                      }
                       key={data.board_no}
                     >
                       <Image

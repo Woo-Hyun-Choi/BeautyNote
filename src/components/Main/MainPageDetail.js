@@ -41,7 +41,7 @@ const MainPageDetail = ({ navigation }) => {
   }, [refreshing]);
 
   useEffect(() => {
-    if (board_no === null) {
+    if (board_no == null) {
       const getBoard_no = navigation.getParam("board_no");
       setBoard_no(getBoard_no);
       console.log("globalData", globalData);
@@ -66,18 +66,13 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/getDetail`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
       console.log("response.data", response.data);
-
       setDetail(response.data.data);
     } catch (error) {
       console.log("MainpageDetail.js getDetailList Function Error", error);
-      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+      // alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
     }
   };
 
@@ -87,11 +82,7 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/getComment`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       console.log("response.data.data", response.data.data);
@@ -109,24 +100,17 @@ const MainPageDetail = ({ navigation }) => {
         const Authorization = await GET_USER_TOKEN();
         const response = await axios.post(
           `${DEV_SERVER}/TimeLine/writeComment`,
-          {
-            content: comment,
-            board_no
-          },
-          {
-            headers: {
-              Authorization
-            }
-          }
+          { content: comment, board_no },
+          { headers: { Authorization } }
         );
 
-        alert(response.data.message);
         if (response.data.message === "success") {
           getCommentList();
           setComment("");
           getDetailList();
         } else {
           alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+          console.log("MainpageDetail.js writeComment else Error", error);
         }
       } else {
         alert("댓글을 입력해주세요.");
@@ -143,14 +127,8 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/likePost`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
-
-      console.log("1", response.data);
 
       if (response.data.status === "success") {
         const edit = detail.map(data =>
@@ -169,7 +147,7 @@ const MainPageDetail = ({ navigation }) => {
         setDetail(edit);
       }
     } catch (error) {
-      console.log("MainPage.js onLike Function Error", error);
+      console.log("MainPageDetail.js onLike Function Error", error);
       alert("요청에 문제가 있습니다. 잠시 후에 다시 요청해주세요.");
     }
   };
@@ -180,18 +158,10 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Profile/getUserProfile`,
         {},
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
-
-      console.log("response = " + response.data.data.img);
-      console.log("response = " + response.data.data.nickname);
-      console.log("response = " + response.data.data.email);
-      console.log("response = " + response.data.data.board_list);
-      setProfile(response.data.data);
+      console.log("response.data.data.img = " + response.data.data.img);
+      setProfile(response.data.data.img);
     } catch (error) {
       console.log("MainPageDetail.js getMyProfile Function Error", error);
       alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
@@ -302,8 +272,7 @@ const MainPageDetail = ({ navigation }) => {
                       </Text>
                     </TouchableOpacity>
                     {/* 팔로잉 버튼 */}
-                    {profile.nickname !== detail.writer.nickname &&
-                    profile.img !== detail.writer.img ? (
+                    {profile !== detail.writer.img ? (
                       <TouchableOpacity
                         onPress={() => onFollow(detail.following_no)}
                       >

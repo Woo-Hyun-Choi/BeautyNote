@@ -50,14 +50,9 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/getDetail`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
       console.log("response.data", response.data);
-
       setDetail(response.data.data);
     } catch (error) {
       console.log("MypageDetail.js getDetailList Function Error", error);
@@ -71,11 +66,7 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/getComment`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       console.log("response.data.data", response.data.data);
@@ -93,18 +84,10 @@ const MainPageDetail = ({ navigation }) => {
         const Authorization = await GET_USER_TOKEN();
         const response = await axios.post(
           `${DEV_SERVER}/TimeLine/writeComment`,
-          {
-            content: comment,
-            board_no
-          },
-          {
-            headers: {
-              Authorization
-            }
-          }
+          { content: comment, board_no },
+          { headers: { Authorization } }
         );
 
-        alert(response.data.message);
         if (response.data.message === "success") {
           getCommentList();
           setComment("");

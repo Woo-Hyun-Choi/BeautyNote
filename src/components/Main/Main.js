@@ -40,11 +40,7 @@ const Main = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Account/userInfo`,
         {},
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       if (

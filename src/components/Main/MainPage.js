@@ -30,13 +30,13 @@ const MainPage = ({ navigation }) => {
 
   const { globalData, setGlobalData } = useContext(GlobalContext);
 
-  // 리프레시 컨트롤
+  // refresh control
   const [refreshing, setRefreshing] = React.useState(false);
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-
     wait(2000).then(() => setRefreshing(false));
     callAPI();
+    console.log("Refresh")
   }, [refreshing]);
 
   useEffect(() => {
@@ -73,23 +73,19 @@ const MainPage = ({ navigation }) => {
   // 내 프로필 조회
   const getMyProfile = async () => {
     try {
-      const Authorization = await GET_USER_TOKEN();
-      const response = await axios.post(
-        `${DEV_SERVER}/Profile/getUserProfile`,
-        {},
-        {
-          headers: {
-            Authorization
-          }
-        }
-      );
-
-      console.log("response = " + response.data.data.img);
-      console.log("response = " + response.data.data.nickname);
-      console.log("response = " + response.data.data.email);
-      console.log("response = " + response.data.data.board_list);
-      setProfile(response.data.data);
-    } catch (error) {
+          const Authorization = await GET_USER_TOKEN();
+          const response = await axios.post(
+            `${DEV_SERVER}/Profile/getUserProfile`,
+            {},
+            {
+              headers: {
+                Authorization
+              }
+            }
+          );
+          console.log("response.data.data.nickname = " + response.data.data.nickname);
+          setProfile(response.data.data.nickname);
+        } catch (error) {
       console.log("MainPage.js getMyProfile Function Error", error);
       alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
     }
@@ -112,11 +108,7 @@ const MainPage = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/likePost`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       if (response.data.status === "SUCCESS") {
@@ -263,7 +255,6 @@ const MainPage = ({ navigation }) => {
                       }}
                       source={{ uri: data.writer.img }}
                     />
-                    {console.log("data.writer 1 = " + data.writer.img)}
                   </TouchableOpacity>
 
                   {/* 이름, 팔로잉 버튼 */}
@@ -287,10 +278,9 @@ const MainPage = ({ navigation }) => {
                         }}
                       >
                         {data.writer.nickname}
-                        {console.log("data.writer 2 = " + data.writer.nickname)}
                       </Text>
                       {/* 팔로잉 버튼 */}
-                      {profile.nickname !== data.writer.nickname ? (
+                      {data.writer.nickname !== profile ? (
                         <TouchableOpacity
                           onPress={() => onFollow(data.following_no)}
                         >
@@ -468,7 +458,6 @@ const MainPage = ({ navigation }) => {
                           fontSize: 10
                         }}
                       >
-                        {console.log(tag)}
                         {tag}
                       </Text>
                     </View>

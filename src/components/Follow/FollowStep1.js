@@ -26,14 +26,9 @@ const FollowStep1 = ({ navigation }) => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-
     wait(1000).then(() => setRefreshing(false));
     getFollowingList();
   }, [refreshing]);
-
-  useEffect(() => {
-    getFollowingList();
-  }, []);
 
   const getFollowingList = async () => {
     try {
@@ -43,11 +38,7 @@ const FollowStep1 = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Follow/myFollowingList`,
         {},
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
       console.log("response.data.data", response.data.data);
 
@@ -58,17 +49,17 @@ const FollowStep1 = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    getFollowingList();
+  }, []);
+
   const onFollow = async follow_no => {
     try {
       const Authorization = await GET_USER_TOKEN();
       const response = await axios.post(
         `${DEV_SERVER}/Follow/follow`,
         { account_no: follow_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       console.log("re", response.data);
@@ -87,17 +78,11 @@ const FollowStep1 = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Profile/getUserProfile`,
         {},
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
-
-      console.log("response = " + response.data.data.img);
       console.log("response = " + response.data.data.nickname);
       console.log("response = " + response.data.data.email);
-      console.log("response = " + response.data.data.board_list);
+      console.log("response4 = " + response.data.data.account_no);
       setProfile(response.data.data);
     } catch (error) {
       console.log("FollowStep1.js getMyProfile Function Error", error);
@@ -136,69 +121,67 @@ const FollowStep1 = ({ navigation }) => {
                 key={data.following_no}
               >
                 {/* 친구 프로필 사진, 이름, 팔로잉 버튼 */}
-                {profile.img !== data.img ? (
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      marginTop: 20,
-                      marginBottom: 12,
-                      paddingHorizontal: 15
-                    }}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 20,
+                    marginBottom: 12,
+                    paddingHorizontal: 15
+                  }}
+                >
+                  {/* 프로필 사진 */}
+                  <TouchableOpacity
+                    onPress={() => getOtherUserInfo(data.following_no)}
                   >
-                    {/* 프로필 사진 */}
-                    <TouchableOpacity
-                      onPress={() => getOtherUserInfo(data.following_no)}
+                    <Image
+                      style={{
+                        width: 46.7,
+                        height: 46.7,
+                        borderRadius: 40,
+                        marginRight: 8.7
+                      }}
+                      source={{ uri: data.img }}
+                    />
+                  </TouchableOpacity>
+                  {/* 이름, 팔로잉 버튼 */}
+                  <View style={{ flex: 1 }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        width: "100%",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        alignSelf: "center"
+                      }}
                     >
-                      <Image
-                        style={{
-                          width: 46.7,
-                          height: 46.7,
-                          borderRadius: 40,
-                          marginRight: 8.7
-                        }}
-                        source={{ uri: data.img }}
-                      />
-                    </TouchableOpacity>
-                    {/* 이름, 팔로잉 버튼 */}
-                    <View style={{ flex: 1 }}>
-                      <View
-                        style={{
-                          flex: 1,
-                          width: "100%",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          alignSelf: "center"
-                        }}
-                        //   key={data.account_no}
+                      {/* 이름 */}
+                      <TouchableOpacity
+                        onPress={() => getOtherUserInfo(data.following_no)}
                       >
-                        {/* 이름 */}
-                        <TouchableOpacity
-                          onPress={() => getOtherUserInfo(data.following_no)}
+                        <Text
+                          style={{
+                            color: "#282828",
+                            fontSize: 12,
+                            fontWeight: "700"
+                          }}
                         >
-                          <Text
-                            style={{
-                              color: "#282828",
-                              fontSize: 12,
-                              fontWeight: "700"
-                            }}
-                          >
-                            {data.nickname}
-                          </Text>
-                        </TouchableOpacity>
-                        {/* 팔로잉 버튼 */}
-                        {/* {data.is_follow === "Y" ? ( */}
-                        <TouchableOpacity
-                          //   onPress={() => onFollow(data.account_no)}
-                          onPress={() => onFollow(data.following_no)}
-                        >
-                          <Image
-                            resizeMode="contain"
-                            style={{ width: 76, height: 33 }}
-                            source={require("../../assets/images/bt_following_t.png")}
-                          />
-                        </TouchableOpacity>
-                        {/* ) : (
+                          {data.nickname}
+                        </Text>
+                      </TouchableOpacity>
+                      {/* 팔로잉 버튼 */}
+                      {/* {data.is_follow === "Y" ? ( */}
+                      <TouchableOpacity
+                        //   onPress={() => onFollow(data.account_no)}
+                        onPress={() => onFollow(data.following_no)}
+                      >
+                        <Image
+                          resizeMode="contain"
+                          style={{ width: 76, height: 33 }}
+                          source={require("../../assets/images/bt_following_t.png")}
+                        />
+                      </TouchableOpacity>
+                      {/* ) : (
                     <TouchableOpacity onPress={() => onFollow(data.account_no)}>
                       <Image
                         resizeMode="contain"
@@ -207,12 +190,9 @@ const FollowStep1 = ({ navigation }) => {
                       />
                     </TouchableOpacity>
                   )} */}
-                      </View>
                     </View>
                   </View>
-                ) : (
-                  <View />
-                )}
+                </View>
               </View>
             ))}
         </ScrollView>
