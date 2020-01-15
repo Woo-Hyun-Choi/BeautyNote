@@ -160,8 +160,8 @@ const MainPageDetail = ({ navigation }) => {
         {},
         { headers: { Authorization } }
       );
-      console.log("response.data.data.img = " + response.data.data.img);
-      setProfile(response.data.data.img);
+      console.log("response.data.data.nickname = " + response.data.data.nickname);
+      setProfile(response.data.data.nickname);
     } catch (error) {
       console.log("MainPageDetail.js getMyProfile Function Error", error);
       alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
@@ -184,11 +184,7 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/Follow/follow`,
         { account_no: following_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
       if (response.data.status === "success") {
@@ -272,7 +268,7 @@ const MainPageDetail = ({ navigation }) => {
                       </Text>
                     </TouchableOpacity>
                     {/* 팔로잉 버튼 */}
-                    {profile !== detail.writer.img ? (
+                    {profile !== detail.writer.nickname ? (
                       <TouchableOpacity
                         onPress={() => onFollow(detail.following_no)}
                       >
