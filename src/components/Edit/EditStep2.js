@@ -112,7 +112,7 @@ const EditStep2 = ({navigation}) => {
   };
 
   const uploadedProfileCheck = () => {
-    alert("hi");
+    alert("선택된 이미지 입니다.");
   };
 
   const savePhoto = response => {

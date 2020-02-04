@@ -59,7 +59,7 @@ const MyPage = ({ navigation }) => {
       setProfile(response.data.data);
     } catch (error) {
       console.log("MyPage.js getMyProfile Function Error", error);
-      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+      alert("게시글 작성 후 이용하실 수 있습니다.");
     }
   };
 

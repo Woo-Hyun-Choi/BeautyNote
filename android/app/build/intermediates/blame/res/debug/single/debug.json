@@ -24,12 +24,12 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-ldrtl-xhdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/color_abc_search_url_text.xml.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/abc_search_url_text.xml"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/color_abc_search_url_text.xml.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/abc_search_url_text.xml"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/anim_abc_slide_in_bottom.xml.flat",
@@ -92,12 +92,12 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/anim/abc_tooltip_enter.xml"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -116,28 +116,36 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_voice_search_api_material.xml.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_ic_voice_search_api_material.xml"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_fontawesome5free.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_fontawesome5free.json"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable/notification_bg.xml"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_evilicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_evilicons.json"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_voice_search_api_material.xml.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_btn_borderless_material.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_btn_borderless_material.xml"
     },
     {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable/notification_bg.xml"
+    },
+    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable/notification_icon_background.xml"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_edit_text_material.xml.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_edit_text_material.xml"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_main_alarm_t.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_main_alarm_t.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_edit_text_material.xml.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_edit_text_material.xml"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_checkbox.xml.flat",
@@ -146,6 +154,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_nativebase_dist_src_basic_icon_nbicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_nativebase_dist_src_basic_icon_nbicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_material.xml.flat",
@@ -176,12 +188,12 @@
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable-mdpi-v4/notification_bg_normal.9.png"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/drawable-mdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
@@ -224,16 +236,16 @@
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_main_mypage_t.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_light.xml.flat",
@@ -244,12 +256,12 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_action_mode_close_item_material.xml.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout/abc_action_mode_close_item_material.xml"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_action_mode_close_item_material.xml.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
@@ -336,20 +348,24 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/abc_background_cache_hint_selector_material_dark.xml"
     },
     {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/185f5b9efd7c173d0ffd24d204b22e91/core-1.0.1/res/layout/notification_template_part_time.xml"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout-watch-v20_abc_alert_dialog_button_bar_material.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png"
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_octicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_octicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
@@ -468,12 +484,12 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_bt_sub_black.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_bt_sub_black.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
@@ -516,12 +532,12 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
-        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_light.png"
-    },
-    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
+        "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_action_menu_layout.xml.flat",
@@ -554,6 +570,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_bt_back.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_bt_back.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_materialicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_materialicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -622,6 +642,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_fontawesome.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_fontawesome.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
@@ -718,6 +742,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-hdpi_node_modules_reactnavigationstack_lib_module_views_assets_backicon.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-hdpi/node_modules_reactnavigationstack_lib_module_views_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_zocial.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_zocial.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_main_feed_n.png.flat",
@@ -902,6 +930,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_main_followlist_t.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_main_followlist_t.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_entypo.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_entypo.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -1160,6 +1192,10 @@
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_main_edit_n.png"
     },
     {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_fontawesome5free_meta.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_fontawesome5free_meta.json"
+    },
+    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_list_divider_material.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable/abc_list_divider_material.xml"
     },
@@ -1248,6 +1284,10 @@
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_antdesign.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_antdesign.json"
+    },
+    {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout-v26_abc_screen_toolbar.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/layout-v26/abc_screen_toolbar.xml"
     },
@@ -1294,6 +1334,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_dark.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_ionicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_ionicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat",
@@ -1366,6 +1410,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/color_switch_thumb_material_light.xml.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_feather.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_feather.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/layout_abc_expanded_menu_layout.xml.flat",
@@ -1446,6 +1494,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi_src_assets_images_main_mypage_n.png.flat",
         "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/drawable-mdpi/src_assets_images_main_mypage_n.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_foundation.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_foundation.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable_abc_vector_test.xml.flat",
@@ -1558,6 +1610,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-mdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_simplelineicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_simplelineicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -1706,6 +1762,10 @@
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "/Users/choi/.gradle/caches/transforms-2/files-2.1/2c14eda98bc264ccf67c15fd0c8b9165/appcompat-1.0.2/res/drawable-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/raw_node_modules_reactnativevectoricons_glyphmaps_materialcommunityicons.json.flat",
+        "source": "/Users/choi/Desktop/BeautyNote-WH/android/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_materialcommunityicons.json"
     },
     {
         "merged": "/Users/choi/Desktop/BeautyNote-WH/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",

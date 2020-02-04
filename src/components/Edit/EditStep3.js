@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Dimensions
+  Dimensions,
+  Alert
 } from "react-native";
 import WriteContext from "../../context/write.context";
 import axios from "axios";
@@ -14,11 +15,23 @@ import { DEV_SERVER } from "../../setting";
 import { GET_USER_TOKEN } from "../../lib/getToken";
 
 const { width, height } = Dimensions.get("window");
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 const EditStep3 = ({navigation}) => {
   const [hashTag, setHashTag] = useState(null);
   const [hashTagList, setHashTagList] = useState([]);
   const { writeData, setWriteData } = useContext(WriteContext);
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
 
   const validationTagCheck = () => {
     const regex = new RegExp("#");
@@ -78,7 +91,11 @@ const EditStep3 = ({navigation}) => {
         );
         
       if (response.data.status === "SUCCESS") {
-        alert("게시글이 업로드 되었습니다.");
+        Alert.alert(
+          '알림','게시글이 업로드 되었습니다.',[{
+            text:'확인', onPress:()=>onRefresh()
+          }]
+        )
         setWriteData({
           ...writeData,
           data: {
@@ -88,6 +105,7 @@ const EditStep3 = ({navigation}) => {
           }
         });
         navigation.navigate("NewsPeed")
+        onRefresh();
       }
     } catch (error) {
       console.log("App.js API Call Error", error);

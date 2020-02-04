@@ -97,7 +97,7 @@ const FindUserIDStep1 = ({ navigation }) => {
         alert("인증이 확인되었습니다.");
         console.log("response", response.data.data.email);
         setFindEmail(response.data.data.email);
-        // navigation.push("FindUserIDStep2", {email:response.data.data.email})
+        navigation.push("FindUserIDStep2", {email:response.data.data.email})
       }
     } catch (error) {
       console.log("FindUserIDStep1.js checkVerifyCode Function Error", error);

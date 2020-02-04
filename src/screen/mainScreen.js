@@ -3,6 +3,7 @@ import { View, Image, TouchableOpacity } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
+// import NewsPeed from "../components/Main/exam";
 import NewsPeed from "../components/Main/MainPage";
 import Follow from "../components/Follow/FollowStep1";
 import Edit from "../components/Edit/EditStep1";
@@ -174,13 +175,7 @@ const MainTabs = createBottomTabNavigator(
         // paddingTop: 3
       },
       showLabel: false,
-    },
-    navigationOptions: ({ navigation }) => ({
-      tabBarOnPress: (scene, jumpToIndex) => {
-        console.log('onPress:', scene.route);
-        jumpToIndex(scene.index);
-      },
-    }),
+    }
   }
 );
 

@@ -3403,6 +3403,21 @@ public final class R {
   }
   public static final class raw {
     public static final int app=0x7f0b0000;
+    public static final int node_modules_nativebase_dist_src_basic_icon_nbicons=0x7f0b0001;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_antdesign=0x7f0b0002;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_entypo=0x7f0b0003;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_evilicons=0x7f0b0004;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_feather=0x7f0b0005;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_fontawesome=0x7f0b0006;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_fontawesome5free=0x7f0b0007;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_fontawesome5free_meta=0x7f0b0008;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_foundation=0x7f0b0009;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_ionicons=0x7f0b000a;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_materialcommunityicons=0x7f0b000b;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_materialicons=0x7f0b000c;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_octicons=0x7f0b000d;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_simplelineicons=0x7f0b000e;
+    public static final int node_modules_reactnativevectoricons_glyphmaps_zocial=0x7f0b000f;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0c0000;

@@ -72,7 +72,7 @@ const MainPageDetail = ({ navigation }) => {
       setDetail(response.data.data);
     } catch (error) {
       console.log("MypageDetail.js getDetailList Function Error", error);
-      alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
+      // alert("요청에 문제가 있습니다. 잠시후에 다시 요청해주세요.");
     }
   };
 
@@ -126,21 +126,19 @@ const MainPageDetail = ({ navigation }) => {
       const response = await axios.post(
         `${DEV_SERVER}/TimeLine/likePost`,
         { board_no },
-        {
-          headers: {
-            Authorization
-          }
-        }
+        { headers: { Authorization } }
       );
 
-      if (response.data.status === "SUCCESS") {
-        console.log("board_no", detail);
-
+      if (response.data.status === "success") {
         const edit = detail.map(data =>
           data.board_no === board_no
             ? {
                 ...data,
-                is_like: response.data.message
+                is_like: response.data.message,
+                like_num:
+                  response.data.message === "LIKED"
+                    ? data.like_num + 1
+                    : data.like_num - 1
               }
             : data
         );

@@ -9,6 +9,7 @@ import {
   ImageBackground,
   TouchableOpacity
 } from "react-native";
+import Gender from "./Gender"
 import axios from "axios";
 import { DEV_SERVER } from "../../setting";
 import validateEmail from "../../lib/validateEmail";
@@ -21,11 +22,14 @@ const Signup = ({navigation}) => {
     phone: "",
     email: "",
     password: "",
-    gender: "M",
+    gender: "F",
     verifyEmail: false,
     verifySMSAuth: false,
     verifyCode: ""
   });
+  const [itemSelected, setItemSelected] = useState({
+    itemOne:""
+  })
   const { globalData, setGlobalData } = useContext(GlobalContext);
 
   const join = async () => {
@@ -227,7 +231,7 @@ const Signup = ({navigation}) => {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
-                onPress={()=>alert("사용가능한 닉네임입니다.")}
+                onPress={() => alert("사용가능한 닉네임입니다.")}
               >
                 <ImageBackground
                   style={{
@@ -448,13 +452,14 @@ const Signup = ({navigation}) => {
             <View
               style={{
                 flex: 2,
-                display:"flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                alignItems: "flex-end"
+                display: "flex",
+                height:50
               }}
             >
-              <TouchableOpacity>
+              <View style={{ flex:1 }}>
+                <Gender />
+              </View>
+              {/* <TouchableOpacity>
                 <Image
                   resizeMode="contain"
                   style={{ width: 100, height: 30 }}
@@ -471,7 +476,7 @@ const Signup = ({navigation}) => {
                   //   source={select ? require("../../assets/images/bt_men_t.png")
                   //  				 : require("../../assets/images/bt_men_n.png") }
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
         </View>
@@ -518,9 +523,7 @@ const Signup = ({navigation}) => {
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               {/* {약관.약관.length > 150 ? `${약관.약관.substring(0, 147)}...` : 약관.약관} */}
-              <Text style={{ color: "#be1d2d" }}>
-                더보기 >
-              </Text>
+              <Text style={{ color: "#be1d2d" }}>더보기 ></Text>
             </Text>
           </View>
 
@@ -536,7 +539,7 @@ const Signup = ({navigation}) => {
               <Text style={{ fontSize: 15, paddingVertical: 15 }}>
                 약관동의
               </Text>
-              <TouchableOpacity >
+              <TouchableOpacity>
                 <Image
                   style={{ width: 24, height: 24 }}
                   source={require("../../assets/images/bt_check_n.png")}
@@ -554,9 +557,7 @@ const Signup = ({navigation}) => {
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               약관입니다.약관입니다.약관입니다.약관입니다.약관입니다.
               {/* {약관.약관.length > 150 ? `${약관.약관.substring(0, 147)}...` : 약관.약관} */}
-              <Text style={{ color: "#be1d2d" }} >
-                더보기 >
-              </Text>
+              <Text style={{ color: "#be1d2d" }}>더보기 ></Text>
             </Text>
           </View>
 

@@ -11,6 +11,7 @@ import {
   RefreshControl,
   TouchableWithoutFeedback
 } from "react-native";
+import { NavigationEvents} from "react-navigation";
 import Swiper from "../Swiper/Swiper";
 import axios from "axios";
 import { DEV_SERVER } from "../../setting";
@@ -27,24 +28,15 @@ const MainPage = ({ navigation }) => {
   const [lists, setLists] = useState([]);
   const [page_no, setPage_no] = useState(1);
   const [profile, setProfile] = useState(null);
-
-  const { globalData, setGlobalData } = useContext(GlobalContext);
-
-  // refresh control
+  const [data, setData] = useState([]);
+  // const { globalData, setGlobalData } = useContext(GlobalContext);
   const [refreshing, setRefreshing] = React.useState(false);
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
     callAPI();
+    wait(2000).then(() => setRefreshing(false));
     console.log("Refresh")
   }, [refreshing]);
-
-  useEffect(() => {
-    if (page_no === 1) {
-      callAPI();
-      onRefresh();
-    }
-  }, []);
 
   // 타임라인 조회
   const callAPI = async () => {
@@ -92,6 +84,7 @@ const MainPage = ({ navigation }) => {
   };
 
   useEffect(() => {
+    callAPI();
     getMyProfile();
   }, []);
 
@@ -166,6 +159,7 @@ const MainPage = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: 15 }}>
+      <NavigationEvents onDidFocus={() => callAPI() && onRefresh()} />
       {/* 검색창 */}
       <View
         style={{

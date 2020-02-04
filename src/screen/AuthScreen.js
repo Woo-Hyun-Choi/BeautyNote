@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, Image, TouchableOpacity, Platform} from "react-native"
+import {View, Text, Image, TouchableOpacity, Platform} from "react-native"  
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import Intro from "../components/Intro/Intro"
@@ -9,6 +9,7 @@ import FindUserIDStep2 from "../components/Auth/FindUserID/FindUserIDStep2";
 import FindUserPasswordStep1 from "../components/Auth/FindUserPassword/FindUserPasswordStep1";
 import FindUserPasswordStep2 from "../components/Auth/FindUserPassword/FindUserPasswordStep2";
 import Signup from "../components/Auth/Signup";
+// import Signup from "../components/Auth/Gender";
 import Main from "../screen/mainScreen"
 
 const AuthStack = createStackNavigator({
